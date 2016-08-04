@@ -10,6 +10,7 @@ A valid registration key is *required* to use the BEA's API. A key can be obtain
 # Installation
 
 BeaData is not yet a registered package, so install using
+
     Pkg.clone("https://github.com/sbnicar/BeaData")
     
 # Usage
