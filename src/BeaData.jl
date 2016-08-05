@@ -11,7 +11,8 @@ export
     api_url,
     api_key,
     api_dataset,
-    get_nipa_table
+    get_nipa_table,
+    nipa_metadata_tex
 
 const DEFAULT_API_URL   = "http://www.bea.gov/api/data"
 const API_KEY_LENGTH    = 36
@@ -92,6 +93,7 @@ end
 # """
 type BeaNipaTable
     tablenum::AbstractString
+    tableid::AbstractString
     tabledesc::AbstractString
     linedesc::OrderedDict
     tablenotes::OrderedDict
@@ -105,11 +107,12 @@ EMPTY_RESPONSE() = BeaNipaTable("", "", "", 0, 0, DataFrame())
 function Base.show(io::IO, b::BeaNipaTable)
     @printf io "BEA NIPA Table\n"
     @printf io "\tTable: %s\n" b.tablenum
+    @printf io "\tTableID: %s\n" b.tableid
     @printf io "\tDescription: %s\n" b.tabledesc
     @printf io "\tCoverage: %s, from %s to %s\n" b.frequency b.startyear b.endyear
 end
 
 include("get_nipa_table.jl")
-
+include("nipa_metadata_tex.jl")
 
 end # module

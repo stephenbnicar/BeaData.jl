@@ -56,5 +56,10 @@ The method returns an object of type `BeaNipaTable`, with the following fields:
 * `endyear`
 * `df`: a `DataFrame` containing the data values; column names are the line numbers from the table
 
+## Note
+All requests to the BEA API currently throw an `HTTP Parser Exception`.  This appears
+**not** to be a client-side issue, but caused rather by the data returned by the BEA
+server (a similar error occurs when using R).
+
 # Disclaimer
 BeaData is not affiliated with, officially maintained, or otherwise supported by the Bureau of Economic Analysis.

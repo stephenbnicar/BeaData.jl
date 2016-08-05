@@ -68,14 +68,19 @@ function get_nipa_table(b::Bea, TableID, frequency, startyear, endyear)
     end
 
     frequency == "Q"? freq = "Quarterly": freq = "Annual"
-    out = BeaNipaTable(tablenum, tabledesc, linekeys, notes, freq, startyear, endyear, df)
+    out = BeaNipaTable(tablenum, TableID, tabledesc, linekeys, notes, freq, startyear, endyear, df)
     return out
 end
 
 function parse_data_dict{T<:AbstractString}(dict::Dict{T,Any})
-    # function extracts values from data dictionary and returns a tuple
+    # This function extracts values from a single data dictionary and returns a tuple
     linenum = dict["LineNumber"]
     linedesc = dict["LineDescription"]
+    # Add footnote indicator to line description
+    if dict["NoteRef"] != dict["TableID"]
+        fn = split(dict["NoteRef"], ',')
+        linedesc = string(linedesc, " (", fn[2], ")")
+    end
     dataval = float(replace(dict["DataValue"], ",", ""))
 
     # Change date from string to Date() type
