@@ -94,7 +94,7 @@ end
 # """
 type BeaNipaTable
     tablenum::AbstractString
-    tableid::AbstractString
+    tableid::Int
     tabledesc::AbstractString
     linedesc::OrderedDict
     tablenotes::Any

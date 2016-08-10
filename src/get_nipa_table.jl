@@ -19,7 +19,7 @@ Returns
 An object of type `BeaNipaTable`
 
 """
-function get_nipa_table(b::Bea, TableID, frequency, startyear, endyear)
+function get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString, startyear::Int, endyear::Int)
     url = api_url(b)
     key = api_key(b)
     dataset = api_dataset(b)
