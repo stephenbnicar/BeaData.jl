@@ -12,7 +12,8 @@ export
     api_key,
     api_dataset,
     get_nipa_table,
-    nipa_metadata_tex
+    nipa_metadata_tex,
+    table_metadata_tex
 
 const DEFAULT_API_URL   = "http://www.bea.gov/api/data"
 const API_KEY_LENGTH    = 36
@@ -96,7 +97,7 @@ type BeaNipaTable
     tableid::AbstractString
     tabledesc::AbstractString
     linedesc::OrderedDict
-    tablenotes::OrderedDict
+    tablenotes::Any
     frequency::AbstractString
     startyear::Int
     endyear::Int
@@ -114,5 +115,6 @@ end
 
 include("get_nipa_table.jl")
 include("nipa_metadata_tex.jl")
+include("table_metadata_tex.jl")
 
 end # module

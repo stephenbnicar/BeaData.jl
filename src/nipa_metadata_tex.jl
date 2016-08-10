@@ -31,6 +31,7 @@ function nipa_metadata_tex(b::Bea)
         write(f, "\\usepackage{longtable} \n")
         write(f, "\\usepackage{hyperref} \n")
         write(f, "\\begin{document} \n \n")
+        write(f, "Date Created: \\today \n\n")
 
         # Table of NIPA Dataset parameters
         write(f, "\\section{Dataset Parameters: $bea_dataset}  \n")
