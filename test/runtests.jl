@@ -1,5 +1,5 @@
 using BeaData
 using Base.Test
 
-# write your own tests here
-@test 1 == 1
+b = Bea()
+nipatable = get_nipa_table(b, 5, "Q", 2014, 2014)
