@@ -76,7 +76,7 @@ The data frame returned by a call to the API has dates in the first column and
 the table data in the remaining columns.  Data columns are named for the corresponding
 line numbers of the NIPA table.  
 
-Once a table has bee retrieved, the function
+Once a table has been retrieved, the function
 ```julia
     table_metadata_tex(bnt::BeaNipaTable)
 ```
