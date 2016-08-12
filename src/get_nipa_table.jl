@@ -16,7 +16,7 @@ Arguments
 
 Returns
 -------
-An object of type `BeaNipaTable`
+* An object of type `BeaNipaTable`
 
 """
 function get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString, startyear::Int, endyear::Int)

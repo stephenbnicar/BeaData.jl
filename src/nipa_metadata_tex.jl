@@ -1,3 +1,15 @@
+"""
+    `nipa_metadata_tex(b::Bea)`
+
+Arguments
+---------
+* `b`: a BEA API connection
+
+Returns
+---------
+* A .tex file with the parmater list for the NIPA dataset and parameter values
+for the TableID parameter.  The file is written to the curent working directory.
+"""
 function nipa_metadata_tex(b::Bea)
     url = api_url(b)
     key = api_key(b)

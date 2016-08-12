@@ -56,14 +56,14 @@ function Bea(key="")
             end
             key = rstrip(key)
             @printf "API key loaded.\n"
-            # Key validation
-            if length(key) > API_KEY_LENGTH
-                key = key[1:API_KEY_LENGTH]
-                warn("Key too long. First ", API_KEY_LENGTH, " chars used.")
-            end
-        catch err
+        catch
+            error("No API key found, connection not initialized")
         end
+    end
 
+    # Key validation
+    if length(key) > API_KEY_LENGTH || length(key) < API_KEY_LENGTH
+        error("Invalid key length (≠ ", API_KEY_LENGTH, " chars), connection not initialized")
     end
 
     url = DEFAULT_API_URL
@@ -82,16 +82,9 @@ function Base.show(io::IO, b::Bea)
     @printf io "\tdataset: %s\n" api_dataset(b)
 end
 
-# """
-# A NIPA table with metadata returned from a `get_nipa_table` call.
-#
-# Access fields with
-# ```
-# id(s::BeaNipaTable)
-# series(s::BeaNipaTable)
-# notes(s::BeaNipaTable)
-# ```
-# """
+"""
+A NIPA table with data and metadata returned from a `get_nipa_table` call.
+"""
 type BeaNipaTable
     tablenum::AbstractString
     tableid::Int
