@@ -18,6 +18,8 @@ export
 const DEFAULT_API_URL   = "http://www.bea.gov/api/data"
 const API_KEY_LENGTH    = 36
 const DEFAULT_DATASET   = "NIPA"
+const KEY_ENV_NAME      = "BEA_API_KEY"
+const KEY_FILE_NAME     = ".beadatarc"
 
 """
 A connection to the U.S. Bureau of Economic Analysis (BEA) Data API.
@@ -48,19 +50,19 @@ type Bea
     dataset::AbstractString
 end
 
-function Bea(key="")
-    if isempty(key)
-        try
-            open(joinpath(homedir(),".beadatarc"), "r") do f
-                key = readall(f)
-            end
-            key = rstrip(key)
-            @printf "API key loaded.\n"
-        catch
-            error("No API key found, connection not initialized")
+function Bea()
+    key = ""
+    if KEY_ENV_NAME in keys(ENV)
+        key = ENV[KEY_ENV_NAME]
+    elseif isfile(joinpath(homedir(), KEY_FILE_NAME))
+        open(joinpath(homedir(), KEY_FILE_NAME), "r") do file
+            key = readall(file)
         end
+        key = rstrip(key)
+    else
+        error("No BEA API key found, connection not initialized")
     end
-
+    println("BEA API key loaded.")
     # Key validation
     if length(key) > API_KEY_LENGTH || length(key) < API_KEY_LENGTH
         error("Invalid key length (≠ ", API_KEY_LENGTH, " chars), connection not initialized")
@@ -68,7 +70,7 @@ function Bea(key="")
 
     url = DEFAULT_API_URL
     dataset = DEFAULT_DATASET
-    Bea(url, key, dataset)
+    return Bea(url, key, dataset)
 end
 
 api_url(b::Bea) = b.url
