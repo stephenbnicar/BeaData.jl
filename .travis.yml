@@ -1,11 +1,14 @@
+# Documentation: http://docs.travis-ci.com/user/languages/julia/
 language: julia
 os:
-- linux
-- osx
+  - linux
+  - osx
 julia:
-- release
-- 0.5
-env:
-  secure: bfsUaqkw2ViMkzJCFbcjcw71j7ofLe295I5KxcaQYIIpqfTO7mU7otdkU3Rwk01VHD9t/vwU+0xeV78GOCBy881+uAl3hlchTb+QgA8zDSd/TgKoWT/VYPoBPyJAxi9NqanZQKKfGEPnItPGLi3+lXusEyqU3dtEDvD7tN0V3JGEgvj1p4HOZzETbuQ2QCngW8du+nElHYwFWR5XN0olscuNBBD0zytPMbQFCL43Bgqf7yLEnz6z9jRDsuVVvNuFO7yOB+eZRM2i44PhqISI52+ycuB2WlsBNIW+bH3YbvhmTZakt69I6tGFE0eyAhQiLKFmPUoIxFgLJYy+dlfHkxvI3uUhG9XdU6YPw5ymhWSGGdSBWMbLR7oQfcO96az698io7CoDUQKb+GiFRiGt2FytTYc+Yk5y2Q5k8jnGNLh0/GFs8k5/0Gf0+neZC5YbYWiB7ujnq86FkNs1pgchPfWETEgO/N1BOwbGInxAWGmLT/Sj87mOIdYLiAgWPjpEAbCWO5IldjFmVQ+U6eAtw8DGGbAPWFuMZ/Lymaq7hBCriQigkcP7/aCT5bXJMXMwLpAxOGUTo8Jri8LbPPCCgJIaDqckLX2C0oGlG4XV8mPvenqzO6IugS2UU+H+nD7HDnh1A7NXhAmWOFqJenTYH1R6KV6FK+krwB88W95eVQw=
+  - release
+  - 0.5
 notifications:
   email: false
+# uncomment the following lines to override the default test script
+#script:
+#  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
+#  - julia -e 'Pkg.clone(pwd()); Pkg.build("BeaData"); Pkg.test("BeaData"; coverage=true)'
