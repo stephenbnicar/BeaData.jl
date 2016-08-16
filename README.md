@@ -9,10 +9,10 @@ A valid registration key is required to use the BEA's API. A key can be obtained
 
 ## Installation
 
-BeaData is not yet a registered package, so install using:
+At the Julia REPL:
 
 ```julia
-    Pkg.clone("https://github.com/sbnicar/BeaData")
+    Pkg.add("BeaData")
 ```
 
 ## Usage
@@ -83,9 +83,8 @@ Once a table has been retrieved, the function
 will write a .tex file to the current working directory that contains the table name and description, line numbers and descriptions, and table notes.
 
 ## Known Issue
-All requests to the BEA API currently throw an `HTTP Parser Exception`.  This appears
-**not** to be a client-side issue, but caused rather by the data returned by the BEA
-server -- a similar error occurs when using R.
+All requests to the BEA API currently throw an `HTTP Parser Exception`, though this does not prevent the requested 
+query from being completed successfully as long as valid arguments are provided to the functions.  This appears **not** to be a client-side issue, caused instead (as far as I've been able to determine) by some superfluous data returned by the BEA server -- a similar error occurs when using R.
 
 # Disclaimer
 BeaData is not affiliated with, officially maintained, or otherwise supported by the Bureau of Economic Analysis.
