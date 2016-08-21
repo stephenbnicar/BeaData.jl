@@ -1,6 +1,8 @@
 # BeaData
 
-[![Build Status](https://travis-ci.org/sbnicar/BeaData.jl.svg?branch=master)](https://travis-ci.org/sbnicar/BeaData.jl)
+[![Build Status](https://travis-ci.org/stephenbnicar/BeaData.jl.svg?branch=master)](https://travis-ci.org/stephenbnicar/BeaData.jl)
+[![BeaData](http://pkg.julialang.org/badges/BeaData_0.4.svg)](http://pkg.julialang.org/?pkg=BeaData)
+[![BeaData](http://pkg.julialang.org/badges/BeaData_0.5.svg)](http://pkg.julialang.org/?pkg=BeaData)
 
 A Julia interface for retrieving data from the U.S. Bureau of Economic Analysis (BEA)
 Data API.
@@ -83,7 +85,7 @@ Once a table has been retrieved, the function
 will write a .tex file to the current working directory that contains the table name and description, line numbers and descriptions, and table notes.
 
 ## Known Issue
-All requests to the BEA API currently throw an `HTTP Parser Exception`, though this does not prevent the requested 
+All requests to the BEA API currently throw an `HTTP Parser Exception`, though this does not prevent the requested
 query from being completed successfully as long as valid arguments are provided to the functions.  This appears **not** to be a client-side issue, caused instead (as far as I've been able to determine) by some superfluous data returned by the BEA server -- a similar error occurs when using R.
 
 # Disclaimer
