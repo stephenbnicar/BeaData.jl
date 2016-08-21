@@ -9,7 +9,7 @@ makedocs(
 
 deploydocs(
     repo = "github.com/stephenbnicar/BeaData.jl.git",
-    julia  = "0.4",
+    julia  = "release",
     osname = "linux",
     deps = nothing,
     make = nothing
