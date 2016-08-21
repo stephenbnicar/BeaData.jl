@@ -1,5 +1,7 @@
 using Documenter, BeaData
 
 makedocs(
-    modules = [BeaData]
+    modules = [BeaData],
+    format = Documenter.Formats.HTML,
+    sitename = "BeaData.jl",
 )
