@@ -4,3 +4,6 @@
 
 *.tex
 *.pdf
+
+docs/build/
+docs/site/
