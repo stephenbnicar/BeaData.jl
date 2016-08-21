@@ -9,8 +9,8 @@ makedocs(
 
 deploydocs(
     repo = "github.com/stephenbnicar/BeaData.jl.git",
+    target = "build",
     julia  = "release",
-    osname = "linux",
     deps = nothing,
-    make = nothing
+    make = nothing,
 )
