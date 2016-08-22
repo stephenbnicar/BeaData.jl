@@ -1,6 +1,6 @@
 # Package Guide
 
-Currently, the package only retrieves full tables from the standard National
+For now, the package only retrieves full tables from the standard National
 Income and Product Accounts (NIPA) (i.e., no downloads of single data series or
     from other datasets such as the International Transactions Accounts).
 
