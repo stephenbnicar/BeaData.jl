@@ -4,6 +4,11 @@ makedocs(
     modules = [BeaData],
     format = Documenter.Formats.HTML,
     sitename = "BeaData.jl",
+    pages = Any[
+        "Home" => "index.md",
+        "Guide" => "man/guide.md",
+        "Commands" => "lib/public.md"
+    ],
     doctest = false
 )
 
