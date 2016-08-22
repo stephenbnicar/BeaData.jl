@@ -4,6 +4,10 @@
 [![BeaData](http://pkg.julialang.org/badges/BeaData_0.4.svg)](http://pkg.julialang.org/?pkg=BeaData)
 [![BeaData](http://pkg.julialang.org/badges/BeaData_0.5.svg)](http://pkg.julialang.org/?pkg=BeaData)
 
+[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://stephenbnicar.github.io/BeaData.jl/stable)
+[![](https://img.shields.io/badge/docs-latest-blue.svg)](https://stephenbnicar.github.io/BeaData.jl/latest)
+
+
 A Julia interface for retrieving data from the U.S. Bureau of Economic Analysis (BEA)
 Data API.
 
