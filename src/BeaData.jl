@@ -4,7 +4,6 @@ module BeaData
 
 using Requests
 using DataFrames, DataStructures
-using DocStringExtensions
 
 export
     Bea,
