@@ -4,6 +4,7 @@ module BeaData
 
 using Requests
 using DataFrames, DataStructures
+using DocStringExtensions
 
 export
     Bea,
@@ -84,6 +85,22 @@ end
 
 """
 A NIPA table with data and metadata returned from a `get_nipa_table` call.
+
+Fields
+---
+
+* `tablenum::AbstractString`: NIPA table number
+* `tableid::Int`: API TableID
+* `tabledesc::AbstractString`: The table title (e.g., "Real Gross Domestic Product,
+ Chained Dollars" for Table 1.1.6)
+* `linedesc::OrderedDict`: Dictionary of descriptions for each line of the table
+* `tablenotes::Any`: Table notes, if any
+* `frequency::AbstractString`: "A" or "Q"
+* `startyear::Int`
+* `endyear::Int`
+* `df::DataFrame`: the data values from the table; column names are the line numbers from the table,
+the first column contains the date for each observation in Julia `Date` format
+
 """
 type BeaNipaTable
     tablenum::AbstractString
@@ -96,7 +113,6 @@ type BeaNipaTable
     endyear::Int
     df::DataFrame
 end
-EMPTY_RESPONSE() = BeaNipaTable("", "", "", 0, 0, DataFrame())
 
 function Base.show(io::IO, b::BeaNipaTable)
     @printf io "BEA NIPA Table\n"

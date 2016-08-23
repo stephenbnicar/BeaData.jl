@@ -1,8 +1,6 @@
 """
-```
     get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString,
         startyear::Int, endyear::Int)
-```
 
 Request a NIPA table from the BEA data API.
 
