@@ -5,6 +5,8 @@ module BeaData
 using Requests
 using DataFrames, DataStructures
 
+import Base.show
+
 export
     Bea,
     BeaNipaTable,
