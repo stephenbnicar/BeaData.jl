@@ -1,5 +1,5 @@
 """
-    `nipa_metadata_tex(b::Bea)`
+    nipa_metadata_tex(b::Bea)
 
 Arguments
 ---------

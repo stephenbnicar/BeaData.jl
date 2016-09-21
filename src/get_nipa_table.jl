@@ -1,8 +1,6 @@
 """
-```
     get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString,
         startyear::Int, endyear::Int)
-```
 
 Request a NIPA table from the BEA data API.
 
@@ -81,6 +79,7 @@ function parse_data_dict{T<:AbstractString}(dict::Dict{T,Any})
         fn = split(dict["NoteRef"], ',')
         linedesc = string(linedesc, " (", fn[2], ")")
     end
+    # Remove commas from data values
     dataval = float(replace(dict["DataValue"], ",", ""))
 
     # Change date from string to Date() type
@@ -89,8 +88,7 @@ function parse_data_dict{T<:AbstractString}(dict::Dict{T,Any})
     # Quarterly data
     if ismatch(r"Q", timeperiod)
         quarter = parse(Int, timeperiod[end])
-        quarter in (1, 4)? day = 31 : day = 30
-        date = Date(year, quarter*3, day)
+        date = Date(year, (quarter*3 - 2), 1)
     # Annual data
     else
         date = Date(year, 12, 31)

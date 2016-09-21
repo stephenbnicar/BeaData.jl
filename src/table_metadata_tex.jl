@@ -1,5 +1,5 @@
 """
-    `table_metadata_tex(bnt::BeaNipaTable)`
+    table_metadata_tex(bnt::BeaNipaTable)
 
 Arguments
 ---------
