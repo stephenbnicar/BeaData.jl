@@ -7,8 +7,7 @@ Arguments
 
 Returns
 -------
-* A .tex file with metadata (table name and description, line numbers and descriptions,
-and table notes) for a NIPA table.  The file is written to the curent working directory.
+* A .tex file with metadata (table name and description, line numbers and descriptions, and table notes) for a NIPA table.  The file is written to the curent working directory.
 """
 function table_metadata_tex(bnt::BeaNipaTable)
     tablenum = bnt.tablenum

@@ -7,8 +7,7 @@ Arguments
 
 Returns
 ---------
-* A .tex file with the parmater list for the NIPA dataset and parameter values
-for the TableID parameter.  The file is written to the curent working directory.
+* A .tex file with the parmater list for the NIPA dataset and parameter values for the TableID parameter.  The file is written to the curent working directory.
 """
 function nipa_metadata_tex(b::Bea)
     url = api_url(b)
