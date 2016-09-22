@@ -1,5 +1,6 @@
 using BeaData
 using Base.Test
+using Compat
 
 try
     open(joinpath(homedir(),".beadatarc"), "r") do f

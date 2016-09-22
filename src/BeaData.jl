@@ -5,7 +5,7 @@ module BeaData
 using Requests
 using DataFrames, DataStructures
 using DocStringExtensions
-
+using Compat
 import Base.show
 
 export
@@ -52,7 +52,7 @@ function Bea(key="")
     if isempty(key)
         try
             open(joinpath(homedir(),".beadatarc"), "r") do f
-                key = readstring(f)
+                key = readstring(f) 
             end
             key = rstrip(key)
             @printf "API key loaded.\n"
