@@ -20,7 +20,7 @@ with no argument:
 
 ## Retrieve a table
 
-Download a NIPA table using the `get_nipa_table` method:
+Download a NIPA table using the [`get_nipa_table`](@ref) method:
 
 ```julia
    mytable = get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString,
@@ -29,13 +29,13 @@ Download a NIPA table using the `get_nipa_table` method:
 
 Arguments:
 
-* `b`: a BEA API connection
+* `b`: a [`Bea`](@ref) connection
 * `TableID`: the integer Table ID for the desired NIPA table (see "NIPA Table IDs" below)
 * `frequency`: "A" for annual, "Q" for quarerly
 * `startyear`: first year of data requested, in YYYY format
 * `endyear`: last year of data requested, in YYYY format
 
-The method returns an object of type `BeaNipaTable`, with the following fields:
+The method returns an object of type [`BeaNipaTable`](@ref), with the following fields:
 
 * `tablenum`: Table number
 * `tableid`: Table ID
@@ -62,9 +62,9 @@ will write a file named "NipaMetadata.tex" to the current working directory.
 
 ## NIPA Table line numbers
 
-The data frame returned by a call to the API has dates in the first column and
+The `DataFrame` returned by a call to the API has dates in the first column and
 the table data in the remaining columns.  Data columns are named for the corresponding
-line numbers of the NIPA table.  
+line numbers of the NIPA table (e.g., `:line1`, `:line2`, etc.).  
 
 Once a table has been retrieved, the function
 ```julia

@@ -1,4 +1,5 @@
-using Documenter, BeaData
+using Documenter
+using BeaData
 
 makedocs(
     modules = [BeaData],

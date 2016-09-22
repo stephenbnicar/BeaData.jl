@@ -4,15 +4,13 @@ module BeaData
 
 using Requests
 using DataFrames, DataStructures
+using DocStringExtensions
 
 import Base.show
 
 export
     Bea,
     BeaNipaTable,
-    api_url,
-    api_key,
-    api_dataset,
     get_nipa_table,
     nipa_metadata_tex,
     table_metadata_tex
@@ -22,6 +20,8 @@ const API_KEY_LENGTH    = 36
 const DEFAULT_DATASET   = "NIPA"
 
 """
+$(TYPEDEF)
+
 A connection to the U.S. Bureau of Economic Analysis (BEA) Data API.
 
 Constructors
@@ -33,15 +33,13 @@ Arguments
 ---------
 * `key`: Registration key provided by the BEA.
 
-* A valid registration key is *required* to retrieve data from the BEA's API.
-  A key can be obtained by registering at the BEA website.
+A valid registration key is required to retrieve data from the BEA's API.  A key can be obtained by registering at the BEA website.
 
-* A default API key can be specified in a ~/.beadatarc file.
+A default API key can be specified in a ~/.beadatarc file.
 
-Methods
--------
-* `api_url(b::Bls)`: Get the base URL used to connect to the server
-* `api_key(b::Bls)`: Get the API key
+Fields
+------
+$(FIELDS)
 
 """
 type Bea
@@ -54,7 +52,7 @@ function Bea(key="")
     if isempty(key)
         try
             open(joinpath(homedir(),".beadatarc"), "r") do f
-                key = readall(f)
+                key = readstring(f)
             end
             key = rstrip(key)
             @printf "API key loaded.\n"
@@ -73,45 +71,38 @@ function Bea(key="")
     Bea(url, key, dataset)
 end
 
-api_url(b::Bea) = b.url
-api_key(b::Bea) = b.key
-api_dataset(b::Bea) = b.dataset
-
 function Base.show(io::IO, b::Bea)
     @printf io "BEA API Connection\n"
-    @printf io "\turl: %s\n" api_url(b)
-    @printf io "\tkey: %s\n" api_key(b)
-    @printf io "\tdataset: %s\n" api_dataset(b)
+    @printf io "\turl: %s\n" b.url
+    @printf io "\tkey: %s\n" b.key
+    @printf io "\tdataset: %s\n" b.dataset
 end
 
 """
-A NIPA table with data and metadata returned from a `get_nipa_table` call.
+$(TYPEDEF)
+
+A NIPA table with data and metadata returned from a [`get_nipa_table`](@ref) call.
 
 Fields
 ---
-
-* `tablenum::AbstractString`: NIPA table number
-* `tableid::Int`: API TableID
-* `tabledesc::AbstractString`: The table title (e.g., "Real Gross Domestic Product,
- Chained Dollars" for Table 1.1.6)
-* `linedesc::OrderedDict`: Dictionary of descriptions for each line of the table
-* `tablenotes::Any`: Table notes, if any
-* `frequency::AbstractString`: "A" or "Q"
-* `startyear::Int`
-* `endyear::Int`
-* `df::DataFrame`: the data values from the table; column names are the line numbers from the table,
-the first column contains the date for each observation in Julia `Date` format
+$(FIELDS)
 
 """
 type BeaNipaTable
+    "- NIPA table number"
     tablenum::AbstractString
+    "- API TableID"
     tableid::Int
+    "- The table title (e.g., 'Real Gross Domestic Product, Chained Dollars' for Table 1.1.6)"
     tabledesc::AbstractString
+    "- `OrderedDict` of descriptions for each line of the table"
     linedesc::OrderedDict
+    "- Table notes, if any"
     tablenotes::Any
     frequency::AbstractString
     startyear::Int
     endyear::Int
+    "- `DataFrame` containing the data values from the table; column names are the line numbers from the table, the first column contains the date for each observation in Julia `Date` format"
     df::DataFrame
 end
 

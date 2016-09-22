@@ -1,26 +1,22 @@
 """
-    get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString,
-        startyear::Int, endyear::Int)
 
-Request a NIPA table from the BEA data API.
+$(SIGNATURES)
+
+Request a NIPA table from the BEA data API and return an object of type [`BeaNipaTable`](@ref).
 
 Arguments
 ---------
-* `b`: a BEA API connection
-* `TableID`: the integer Table ID for the desired NIPA table
-* `frequency`: "A" for annual, "Q" for quarerly
-* `startyear`: first year of data requested, in YYYY format
-* `endyear`: last year of data requested, in YYYY format
-
-Returns
--------
-* An object of type `BeaNipaTable`
+* `b` -- a [`Bea`](@ref) connection
+* `TableID` -- the integer Table ID for the desired NIPA table
+* `frequency` -- "A" for annual, "Q" for quarerly
+* `startyear` -- first year of data requested, in YYYY format
+* `endyear` -- last year of data requested, in YYYY format
 
 """
 function get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString, startyear::Int, endyear::Int)
-    url = api_url(b)
-    key = api_key(b)
-    dataset = api_dataset(b)
+    url = b.url
+    key = b.key
+    dataset = b.dataset
     bea_method = "GetData"
     years = collect(startyear:1:endyear)
 
@@ -45,7 +41,7 @@ function get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString, startye
     # Create data frame of values, reshape, and create names
     dflong = DataFrame(date = dates, line = linenums, value = values)
     df = unstack(dflong, :date, :line, :value) # Convert to "wide" format
-    newnames = [symbol(string("line", name)) for name in names(df)[2:end]]
+    newnames = [Symbol(string("line", name)) for name in names(df)[2:end]]
     names!(df, [:date; newnames])
 
     # Create OrderedDict of line descriptions
@@ -70,8 +66,13 @@ function get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString, startye
     return out
 end
 
-function parse_data_dict{T<:AbstractString}(dict::Dict{T,Any})
-    # This function extracts values from a single data dictionary and returns a tuple
+"""
+$(SIGNATURES)
+
+Extract information for a single observation and return as a tuple.  (Internal method for [`get_nipa_table`](@ref).)
+"""
+function parse_data_dict(dict::Dict)
+    # This function
     linenum = dict["LineNumber"]
     linedesc = dict["LineDescription"]
     # Add footnote indicator to line description
