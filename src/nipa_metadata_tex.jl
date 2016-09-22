@@ -9,9 +9,9 @@ Arguments
 
 """
 function nipa_metadata_tex(b::Bea)
-    url = api_url(b)
-    key = api_key(b)
-    bea_dataset = "NIPA"
+    url = b.url
+    key = b.key
+    bea_dataset = b.dataset
 
     bea_method2 = "GetParameterList"
     query2 = Dict("UserID" => key,
