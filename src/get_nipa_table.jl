@@ -89,10 +89,10 @@ function parse_data_dict(dict::Dict)
     # Quarterly data
     if ismatch(r"Q", timeperiod)
         quarter = parse(Int, timeperiod[end])
-        date = Date(year, (quarter*3 - 2), 1)
+        date = Date(year, (quarter*3), 1)
     # Annual data
     else
-        date = Date(year, 12, 31)
+        date = Date(year, 12, 1)
     end
 
     return (dataval, date, linenum, linedesc)
