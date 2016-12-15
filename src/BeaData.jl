@@ -10,12 +10,14 @@ import Base.show
 
 export
     Bea,
+    get_bea_datasets,
+    get_bea_parameterlist,
     BeaNipaTable,
     get_nipa_table,
     nipa_metadata_tex,
     table_metadata_tex
 
-const DEFAULT_API_URL   = "http://www.bea.gov/api/data"
+const DEFAULT_API_URL   = "https://www.bea.gov/api/data"
 const API_KEY_LENGTH    = 36
 const DEFAULT_DATASET   = "NIPA"
 
@@ -52,7 +54,7 @@ function Bea(key="")
     if isempty(key)
         try
             open(joinpath(homedir(),".beadatarc"), "r") do f
-                key = readstring(f) 
+                key = readstring(f)
             end
             key = rstrip(key)
             @printf "API key loaded.\n"
@@ -114,6 +116,8 @@ function Base.show(io::IO, b::BeaNipaTable)
     @printf io "\tCoverage: %s, from %s to %s\n" b.frequency b.startyear b.endyear
 end
 
+include("get_bea_datasets.jl")
+include("get_bea_parameterlist.jl")
 include("get_nipa_table.jl")
 include("nipa_metadata_tex.jl")
 include("table_metadata_tex.jl")
