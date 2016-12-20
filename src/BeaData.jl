@@ -9,10 +9,12 @@ using Compat
 import Base.show
 
 export
+    # Types
     Bea,
+    BeaNipaTable,
+    # Methods
     get_bea_datasets,
     get_bea_parameterlist,
-    BeaNipaTable,
     get_nipa_table,
     nipa_metadata_tex,
     table_metadata_tex
@@ -87,24 +89,27 @@ A NIPA table with data and metadata returned from a [`get_nipa_table`](@ref) cal
 
 Fields
 ---
-$(FIELDS)
+
+* tablenum - NIPA table number
+* tableid - API TableID
+* tabledesc - The table title (e.g., 'Real Gross Domestic Product, Chained Dollars' for Table 1.1.6)
+* linedesc - `OrderedDict` of descriptions for each line of the table
+* tablenotes - Table notes, if any
+* frequency
+* startyear
+* endyear
+* df - `DataFrame` containing the data values from the table; column names are the line numbers from the table, the first column contains the date for each observation in Julia `Date` format
 
 """
 type BeaNipaTable
-    "- NIPA table number"
     tablenum::AbstractString
-    "- API TableID"
     tableid::Int
-    "- The table title (e.g., 'Real Gross Domestic Product, Chained Dollars' for Table 1.1.6)"
     tabledesc::AbstractString
-    "- `OrderedDict` of descriptions for each line of the table"
     linedesc::OrderedDict
-    "- Table notes, if any"
     tablenotes::Any
     frequency::AbstractString
     startyear::Int
     endyear::Int
-    "- `DataFrame` containing the data values from the table; column names are the line numbers from the table, the first column contains the date for each observation in Julia `Date` format"
     df::DataFrame
 end
 
