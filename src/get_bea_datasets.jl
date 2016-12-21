@@ -1,3 +1,14 @@
+"""
+
+$(SIGNATURES)
+
+Return, in a `DataFrame`, a list of IDs and descriptions for datasets accessible from the BEA data API.
+
+Arguments
+---------
+* `b` -- a [`Bea`](@ref) connection
+
+"""
 function get_bea_datasets(b::Bea)
     url = b.url
     key = b.key

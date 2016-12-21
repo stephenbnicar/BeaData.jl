@@ -1,3 +1,15 @@
+"""
+
+$(SIGNATURES)
+
+Return, in a `DataFrame`, a list of parameter IDs and descriptions for `dataset`.
+
+Arguments
+---------
+* `b` -- a [`Bea`](@ref) connection
+* `dataset` -- String indicating the dataset ID.
+
+"""
 function get_bea_parameterlist(b::BeaData.Bea, dataset::String)
     url = b.url
     key = b.key
