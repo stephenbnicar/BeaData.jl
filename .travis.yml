@@ -1,21 +1,16 @@
-# Documentation: http://docs.travis-ci.com/user/languages/julia/
 language: julia
-
 os:
-  - linux
-  - osx
-
+- linux
+- osx
 julia:
-  - 0.5
-  - 0.4
-
+- 0.5
+- 0.4
 notifications:
   email: false
-
 after_success:
-  - julia -e 'Pkg.add("Documenter")'
-  - julia -e 'cd(Pkg.dir("BeaData")); include(joinpath("docs", "make.jl"))'
-# uncomment the following lines to override the default test script
-#script:
-#  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-#  - julia -e 'Pkg.clone(pwd()); Pkg.build("BeaData"); Pkg.test("BeaData"; coverage=true)'
+- julia -e 'Pkg.add("Documenter")'
+- julia -e 'cd(Pkg.dir("BeaData")); include(joinpath("docs", "make.jl"))'
+env:
+  matrix:
+  - secure: FRol9Z/3LASVa37MfCyV6300ZzP5f3WVed6Am/4eu56klUlboT0yn1P8c2FuL+621gECKqzjo78cjVDuZiJOTDqnKWRfa0Uj2ulA0dsrCgQIidD5ufgOkxKPZS9YyhfTz7TA/5JSKxPl4Ve42NkP4lNMDTMm+S7eS3cbWC6f6EUG/HhYhIhBpZSR8FE+FQUT0aQ51AT31ET/YQJaUiSYQ6VviywUx1YanuhtzamsfKTWqtZwXyKHOK8zJDKh9thtIHU/jedO9Vmkk9sAsddDv9CVbnKSMhXpnsnS+p/quV9W6X4T1wlueW1RxuXRx4A+WIZoLeAX7dIzXkCyPuLzRosYXQuYFWj6acpU+2oFXprWZBkGOv8STNhcruRvlPHdyDor46p6iVncOBejbvbvMCosALqTxYa2qGNbuA7ZzCqz7lkqRQuObBXxWQ1awwTb0ddapOHAnO/3WjzI1IjDvAFnWTMnvvqwSipEefw4Aqr/aLho0q5Mz5cIRDi2rB//KgQR2jsjApWnY78OViNA34GX3Thww07050IOjIfchQR8tPQQRIVKGHygMvOOKpo9U2EGCPI9LimWFZZcgR7U/Rv6eA89mNppHiCmWW94a0QUgPTjIbw+v4wHdjdjzGrSdnhbJXPCEquvk08jCt117V4qRFGH7x1f9nSglvktj/A=
+  - secure: sIPGsfd0XI721CXn+IzVLGjhIweEKgkJUm4eWUDa7oYPblJVnxsVTkrw2YFUJxwDuLg2TZ0KhVqy11mrWcnUB4EzqAX39HtrG500lHcybEteg5yx0ZPcnMvorH7BtTb4epMKKWXnzE2PCl5BrBKAc5Qw+9srbCHcbigI1JqItGuw1ws6tm2DxymNrogNeE9xjHxXXi7pHFWbwzj547bqCLVZDgKSzJRC95zGjpjdNP6pYM6V6qP+UzfN++n6FYYW4d0wd2cx72QBgCpa/e6vkjq2prS0xCc2cYcMe8PrE1tohS3TmgVzJ0Qo4iz4IdWaJQE+2igv+C7XgXK5aMx18ZQ8w6EU8p5Yb2wEPHmadiS/7R9SGZk4fDFEXoqWKYe2sXwIKYLd8A18mmkzAE8S41sbne2+uzsQPIsjXIWVhzW77k0qHp1CepUu+TY/jrC7LSm84bW7/BlEDYdAd4sW7l68mO/y9hqhcMRWIn6PHgghoXTSxO3TR1geKDwSe1r3+xG5BypvLlPrXFJtzaaRmyqfeWdOc/hkteo0UlG9S31FcB2gDohYuiWT2E9iIWydOuQ5hEqb97Cr9T6GCzeVleZvJibrbtU85FfgUaAi/6qTZTdD51NoBJdOO5Ktm77pVkb5MwC6WJscEKFNSabX6CldM0Gy7JpNjF2ds/v7nNM=
