@@ -52,27 +52,29 @@ type Bea
     dataset::AbstractString
 end
 
-function Bea(key="")
-    if isempty(key)
-        try
-            open(joinpath(homedir(),".beadatarc"), "r") do f
-                key = readstring(f)
-            end
-            key = rstrip(key)
-            @printf "API key loaded.\n"
-        catch
-            error("No API key found, connection not initialized")
+Bea(key) = Bea(DEFAULT_API_URL, key, DEFAULT_DATASET)
+
+function Bea()
+    key = ""
+    if "BEA_KEY" in keys(ENV)
+        key = ENV["BEA_KEY"]
+    elseif isfile(joinpath(homedir(), ".beadatarc"))
+        open(joinpath(homedir(),".beadatarc"), "r") do f
+            key = readstring(f)
         end
+        key = rstrip(key)
+    else
+        error("No API key found, connection not initialized")
     end
+
+    println("API key loaded.")
 
     # Key validation
     if length(key) > API_KEY_LENGTH || length(key) < API_KEY_LENGTH
         error("Invalid key length (≠ ", API_KEY_LENGTH, " chars), connection not initialized")
     end
 
-    url = DEFAULT_API_URL
-    dataset = DEFAULT_DATASET
-    Bea(url, key, dataset)
+    return Bea(key)
 end
 
 function Base.show(io::IO, b::Bea)
