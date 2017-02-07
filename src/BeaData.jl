@@ -81,7 +81,6 @@ function Base.show(io::IO, b::Bea)
     @printf io "BEA API Connection\n"
     @printf io "\turl: %s\n" b.url
     @printf io "\tkey: %s\n" b.key
-    @printf io "\tdataset: %s\n" b.dataset
 end
 
 """
