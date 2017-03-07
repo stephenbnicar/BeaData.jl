@@ -26,11 +26,9 @@ Income and Product Accounts (NIPA) (i.e., no downloads of single data series or
 
 
 ## Known Issue
-All requests to the BEA API currently throw an `HTTP Parser Exception`,
+All requests by BeaData.jl to the BEA API currently throw an `HTTP Parser Exception`,
 though this does not prevent the requested query from being completed successfully
-as long as valid arguments are provided to the functions.  This appears not
-to be a client-side issue, caused instead (as far as I've been able to determine)
-by some superfluous data returned by the BEA server -- a similar error occurs when using R.
+as long as valid arguments are provided to the functions.  This is not a client-side issue, caused instead by an extra space character returned by the BEA server's response (thanks to  [@quinnj](https://github.com/quinnj) - Jacob Quinn - for figuring this out).  This will be fixed in a future update.
 
 ## Disclaimer
 BeaData is not affiliated with, officially maintained, or otherwise supported by the Bureau of Economic Analysis.
