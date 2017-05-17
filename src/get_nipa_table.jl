@@ -1,6 +1,5 @@
 """
-
-$(SIGNATURES)
+    get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString, startyear::Int, endyear::Int)
 
 Request a NIPA table from the BEA data API and return an object of type [`BeaNipaTable`](@ref).
 
@@ -18,7 +17,7 @@ function get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString, startye
     key = b.key
     dataset = b.dataset
     bea_method = "GetData"
-    years = collect(startyear:1:endyear)
+    years = join(collect(startyear:1:endyear), ",")
 
     querydict = Dict("UserID" => key,
                      "Method" => bea_method,
@@ -28,8 +27,9 @@ function get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString, startye
                      "Year" => years,
                      "ResultFormat" => "JSON")
 
-    response = get(url; query = querydict)
-    response_json = Requests.json(response)
+    response = HTTP.get(url; query = querydict)
+    response_body = String(take!(response))
+    response_json = JSON.parse(response_body)
 
     # Extract the vector of Dicts containing the data
     data_dicts = response_json["BEAAPI"]["Results"]["Data"]
@@ -67,7 +67,7 @@ function get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString, startye
 end
 
 """
-$(SIGNATURES)
+    parse_data_dict(dict::Dict)
 
 Extract information for a single observation and return as a tuple.  (Internal method for [`get_nipa_table`](@ref).)
 """

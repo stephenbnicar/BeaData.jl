@@ -1,6 +1,6 @@
-julia 0.4
-Requests
+julia 0.5
+HTTP
+JSON
 DataFrames
 DataStructures
 DocStringExtensions
-Compat 0.7.9

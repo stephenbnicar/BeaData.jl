@@ -2,10 +2,12 @@ isdefined(Base, :__precompile__) && __precompile__()
 
 module BeaData
 
+using HTTP
+using JSON
 using Requests
 using DataFrames, DataStructures
 using DocStringExtensions
-using Compat
+# using Compat
 import Base.show
 
 export
@@ -79,8 +81,8 @@ end
 
 function Base.show(io::IO, b::Bea)
     @printf io "BEA API Connection\n"
-    @printf io "\turl: %s\n" b.url
-    @printf io "\tkey: %s\n" b.key
+    @printf io "url: %s\n" b.url
+    @printf io "key: %s\n" b.key
 end
 
 """
@@ -116,10 +118,10 @@ end
 
 function Base.show(io::IO, b::BeaNipaTable)
     @printf io "BEA NIPA Table\n"
-    @printf io "\tTable: %s\n" b.tablenum
-    @printf io "\tTableID: %s\n" b.tableid
-    @printf io "\tDescription: %s\n" b.tabledesc
-    @printf io "\tCoverage: %s, from %s to %s\n" b.frequency b.startyear b.endyear
+    @printf io "Table: %s\n" b.tablenum
+    @printf io "TableID: %s\n" b.tableid
+    @printf io "Description: %s\n" b.tabledesc
+    @printf io "Coverage: %s, from %s to %s\n" b.frequency b.startyear b.endyear
 end
 
 include("get_bea_datasets.jl")

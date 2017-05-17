@@ -1,6 +1,5 @@
 """
-
-$(SIGNATURES)
+    get_bea_parameterlist(b::BeaData.Bea, dataset::String)
 
 Return, in a `DataFrame`, a list of parameters for `dataset`.
 
@@ -27,8 +26,9 @@ function get_bea_parameterlist(b::BeaData.Bea, dataset::String)
                      "DatasetName" => dataset,
                      "ResultFormat" => "JSON")
 
-    response = get(url; query = querydict)
-    response_json = Requests.json(response)
+    response = HTTP.get(url; query = querydict)
+    response_body = String(take!(response))
+    response_json = JSON.parse(response_body)
     response_dict = response_json["BEAAPI"]["Results"]["Parameter"]
 
     parameter_id = String[]

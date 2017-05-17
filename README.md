@@ -5,7 +5,7 @@ Data API.*
 
 |**Documentation** | **Package Evaluator** | **Build Status** |
 |:----------------:|:---------------------:|:----------------:|
-| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][pkg-0.4-img]][pkg-0.4-url][![][pkg-0.5-img]][pkg-0.5-url] | [![][travis-img]][travis-url] |
+| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][pkg-0.5-img]][pkg-0.5-url] | [![][travis-img]][travis-url] |
 
 ## Installation
 
@@ -21,17 +21,11 @@ See the [package documentation][docs-stable-url].
 A valid registration key is required to use the BEA's API. A key can be obtained by registering [here](http://www.bea.gov/API/signup/index.cfm).
 
 For now, the package only retrieves full tables from the standard National
-Income and Product Accounts (NIPA) (i.e., no downloads of single data series or
-    from other datasets such as the International Transactions Accounts).
-
-
-## Known Issue
-All requests by BeaData.jl to the BEA API currently throw an `HTTP Parser Exception`,
-though this does not prevent the requested query from being completed successfully
-as long as valid arguments are provided to the functions.  This is not a client-side issue, caused instead by an extra space character returned by the BEA server's response (thanks to  [@quinnj](https://github.com/quinnj) - Jacob Quinn - for figuring this out).  This will be fixed in a future update.
+Income and Product Accounts (NIPA) (i.e., no downloads of individual data series or
+    from other BEA datasets).
 
 ## Disclaimer
-BeaData is not affiliated with, officially maintained, or otherwise supported by the Bureau of Economic Analysis.
+BeaData.jl is not affiliated with, officially maintained, or otherwise supported by the Bureau of Economic Analysis.
 
 [docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
 [docs-latest-url]: https://stephenbnicar.github.io/BeaData.jl/latest
