@@ -1,6 +1,5 @@
 """
-
-$(SIGNATURES)
+    get_bea_datasets(b::Bea)
 
 Return, in a `DataFrame`, a list of IDs and descriptions for datasets accessible from the BEA data API.
 
@@ -18,8 +17,9 @@ function get_bea_datasets(b::Bea)
                      "Method" => bea_method,
                      "ResultFormat" => "JSON")
 
-    response = get(url; query = querydict)
-    response_json = Requests.json(response)
+    response = HTTP.get(url; query = querydict)
+    response_body = String(take!(response))
+    response_json = JSON.parse(response_body)
     rdict = response_json["BEAAPI"]["Results"]["Dataset"]
     dbid = String[]
     dbdesc = String[]

@@ -1,5 +1,5 @@
 """
-$(SIGNATURES)
+    table_metadata_tex(bnt::BeaNipaTable)
 
 Write, to the current working directory, a .tex file with metadata (table name and description, line numbers and descriptions, and table notes) for the NIPA table contained in `bnt`.
 

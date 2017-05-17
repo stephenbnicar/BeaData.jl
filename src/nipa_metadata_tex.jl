@@ -1,5 +1,5 @@
 """
-$(SIGNATURES)
+    nipa_metadata_tex(b::Bea)
 
 Write, to the current working directory, a .tex file with the parmater list for the NIPA dataset and parameter values for the TableID parameter.
 
@@ -17,8 +17,10 @@ function nipa_metadata_tex(b::Bea)
     query2 = Dict("UserID" => key,
                      "Method" => bea_method2,
                      "DatasetName" => bea_dataset)
-    response2 = get(url; query = query2)
-    response_json2 = Requests.json(response2)
+
+    response2 = HTTP.get(url; query = query2)
+    response_body2 = String(take!(response2))
+    response_json2 = JSON.parse(response_body2)
     paramlist = response_json2["BEAAPI"]["Results"]["Parameter"]
 
     bea_method3 = "GetParameterValues"
@@ -27,8 +29,9 @@ function nipa_metadata_tex(b::Bea)
                      "Method" => bea_method3,
                      "DatasetName" => bea_dataset,
                      "ParameterName" => parameter_name)
-    response3 = get(url; query = query3)
-    response_json3 = Requests.json(response3)
+    response3 = HTTP.get(url; query = query3)
+    response_body3 = String(take!(response3))
+    response_json3 = JSON.parse(response_body3)
     paramvals = response_json3["BEAAPI"]["Results"]["ParamValue"]
 
     f = open("NipaMetadata.tex", "w") do f
