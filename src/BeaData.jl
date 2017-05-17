@@ -4,10 +4,9 @@ module BeaData
 
 using HTTP
 using JSON
-using Requests
 using DataFrames, DataStructures
 using DocStringExtensions
-# using Compat
+
 import Base.show
 
 export
