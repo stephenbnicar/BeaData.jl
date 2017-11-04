@@ -8,4 +8,5 @@ Pages = ["public.md"]
 
 ```@autodocs
 Modules = [BeaData]
+Private = false
 ```

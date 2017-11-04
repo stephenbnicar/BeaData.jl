@@ -9,7 +9,7 @@ Arguments
 * `dataset` -- String indicating the dataset ID.
 
 """
-function get_bea_parameterlist(b::BeaData.Bea, dataset::String)
+function get_bea_parameterlist(b::Bea, dataset::String)
     url = b.url
     key = b.key
     bea_method = "GetParameterList"

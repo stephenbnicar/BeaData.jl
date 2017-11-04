@@ -16,9 +16,7 @@ export
     # Methods
     get_bea_datasets,
     get_bea_parameterlist,
-    get_nipa_table,
-    nipa_metadata_tex,
-    table_metadata_tex
+    get_nipa_table
 
 const DEFAULT_API_URL = "https://www.bea.gov/api/data"
 const API_KEY_LENGTH  = 36
@@ -91,7 +89,7 @@ Fields
 ---
 
 * tablenum - NIPA table number
-* tableid - API TableName
+* tablename - API TableName
 * tabledesc - The table title (e.g., 'Real Gross Domestic Product, Chained Dollars' for Table 1.1.6)
 * linedesc - `OrderedDict` of descriptions for each line of the table
 * tablenotes - Table notes, if any
