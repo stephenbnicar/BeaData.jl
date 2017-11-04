@@ -12,7 +12,7 @@ import Base.show
 export
     # Types
     Bea,
-    BeaNipaTable,
+    BeaTable,
     # Methods
     get_bea_datasets,
     get_bea_parameterlist,
@@ -20,9 +20,8 @@ export
     nipa_metadata_tex,
     table_metadata_tex
 
-const DEFAULT_API_URL   = "https://www.bea.gov/api/data"
-const API_KEY_LENGTH    = 36
-const DEFAULT_DATASET   = "NIPA"
+const DEFAULT_API_URL = "https://www.bea.gov/api/data"
+const API_KEY_LENGTH  = 36
 
 """
 $(TYPEDEF)
@@ -50,10 +49,9 @@ $(FIELDS)
 type Bea
     url::AbstractString
     key::AbstractString
-    dataset::AbstractString
 end
 
-Bea(key) = Bea(DEFAULT_API_URL, key, DEFAULT_DATASET)
+Bea(key) = Bea(DEFAULT_API_URL, key)
 
 function Bea()
     key = ""
@@ -93,7 +91,7 @@ Fields
 ---
 
 * tablenum - NIPA table number
-* tableid - API TableID
+* tableid - API TableName
 * tabledesc - The table title (e.g., 'Real Gross Domestic Product, Chained Dollars' for Table 1.1.6)
 * linedesc - `OrderedDict` of descriptions for each line of the table
 * tablenotes - Table notes, if any
@@ -103,9 +101,9 @@ Fields
 * df - `DataFrame` containing the data values from the table; column names are the line numbers from the table, the first column contains the date for each observation in Julia `Date` format
 
 """
-type BeaNipaTable
+type BeaTable
     tablenum::AbstractString
-    tableid::Int
+    tablename::AbstractString
     tabledesc::AbstractString
     linedesc::OrderedDict
     tablenotes::Any
@@ -115,10 +113,10 @@ type BeaNipaTable
     df::DataFrame
 end
 
-function Base.show(io::IO, b::BeaNipaTable)
+function Base.show(io::IO, b::BeaTable)
     @printf io "BEA NIPA Table\n"
     @printf io "Table: %s\n" b.tablenum
-    @printf io "TableID: %s\n" b.tableid
+    @printf io "TableName: %s\n" b.tablename
     @printf io "Description: %s\n" b.tabledesc
     @printf io "Coverage: %s, from %s to %s\n" b.frequency b.startyear b.endyear
 end

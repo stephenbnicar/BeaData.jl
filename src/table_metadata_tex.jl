@@ -5,12 +5,12 @@ Write, to the current working directory, a .tex file with metadata (table name a
 
 Arguments
 ---------
-* `bnt` -- a [`BeaNipaTable`](@ref) object
+* `bnt` -- a [`BeaTable`](@ref) object
 
 """
-function table_metadata_tex(bnt::BeaNipaTable)
+function table_metadata_tex(bnt::BeaTable)
     tablenum = bnt.tablenum
-    tableid = bnt.tableid
+    tableid = bnt.tablename
     tabledesc = bnt.tabledesc
     linedesc = bnt.linedesc
     tabnotes = bnt.tablenotes
