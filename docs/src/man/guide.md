@@ -23,22 +23,22 @@ with no argument:
 Download a NIPA table using the [`get_nipa_table`](@ref) method:
 
 ```julia
-   mytable = get_nipa_table(b::Bea, TableID::Int, frequency::AbstractString,
+   mytable = get_nipa_table(b::Bea, TableName::AbstractString, frequency::AbstractString,
         startyear::Int, endyear::Int)
 ```
 
 Arguments:
 
 * `b`: a [`Bea`](@ref) connection
-* `TableID`: the integer Table ID for the desired NIPA table (see "NIPA Table IDs" below)
+* `TableName`: the string TableName for the desired NIPA table (see "NIPA Table Names" below)
 * `frequency`: "A" for annual, "Q" for quarerly
 * `startyear`: first year of data requested, in YYYY format
 * `endyear`: last year of data requested, in YYYY format
 
-The method returns an object of type [`BeaNipaTable`](@ref), with the following fields:
+The method returns an object of type [`BeaTable`](@ref), with the following fields:
 
 * `tablenum`: Table number
-* `tableid`: Table ID
+* `tablename`: TableName
 * `tabledesc`: Table description
 * `linedesc`: an `OrderedDict` with table line numbers and the corresponding variable descriptions
 * `tablenotes`: an `OrderedDict` with any notes to the table
@@ -47,27 +47,16 @@ The method returns an object of type [`BeaNipaTable`](@ref), with the following 
 * `endyear`
 * `df`: a `DataFrame` containing the data values; column names are the line numbers from the table (see "NIPA Table line numbers" below)
 
-## NIPA Table IDs
+## NIPA Table Names
 
-The `TableID`s necessary to retrieve data from the API are not the same as the NIPA
-table numbers, and they are not listed anywhere (that I've found) on the BEA's website.
-I've provided a function that will retrieve the full list of `TableID` values and their
-corresponding table numbers and descriptions and write them to a .tex file.
-
-Once a BEA API connection has been initialized, the function
-```julia
-    nipa_metadata_tex(b::Bea)
-```
-will write a file named "NipaMetadata.tex" to the current working directory.
+The `TableName`s necessary to retrieve data from the API are not exactly the same as the NIPA
+table numbers.  The general pattern for many tables is to replace the periods in the table number
+with zeros and add "T" to the beginning. For example, the `TableName` for Table 1.1.5 is "T10105".
+This pattern does not hold for all tables, however, so use the [`get_bea_parameterlist`](@ref)
+function to retreive a `Dict` of `TableNames` and descriptions.
 
 ## NIPA Table line numbers
 
 The `DataFrame` returned by a call to the API has dates in the first column and
 the table data in the remaining columns.  Data columns are named for the corresponding
 line numbers of the NIPA table (e.g., `:line1`, `:line2`, etc.).  
-
-Once a table has been retrieved, the function
-```julia
-    table_metadata_tex(bnt::BeaNipaTable)
-```
-will write a .tex file to the current working directory that contains the table name and description, line numbers and descriptions, and table notes.

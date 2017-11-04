@@ -7,8 +7,7 @@ makedocs(
     sitename = "BeaData.jl",
     pages = Any[
         "Home" => "index.md",
-        "Guide" => "man/guide.md",
-        "Commands" => "lib/public.md"
+        "Index" => "lib/public.md"
     ],
     doctest = false
 )
