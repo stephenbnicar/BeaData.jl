@@ -67,7 +67,7 @@ function get_nipa_table(b::Bea, TableName::AbstractString, frequency::AbstractSt
             notes = ""
         end
 
-        frequency == "Q"? freq = "Quarterly": freq = "Annual"
+        frequency == "Q" ? freq = "Quarterly" : freq = "Annual"
         out = BeaTable(tablenum, TableName, tabledesc, linekeys, notes, freq, startyear, endyear, df)
     end
     return out
