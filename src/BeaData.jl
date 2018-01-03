@@ -1,4 +1,5 @@
-isdefined(Base, :__precompile__) && __precompile__()
+__precompile__()
+
 
 module BeaData
 
@@ -44,7 +45,7 @@ Fields
 $(FIELDS)
 
 """
-type Bea
+mutable struct Bea
     url::AbstractString
     key::AbstractString
 end
@@ -99,7 +100,7 @@ Fields
 * df - `DataFrame` containing the data values from the table; column names are the line numbers from the table, the first column contains the date for each observation in Julia `Date` format
 
 """
-type BeaTable
+mutable struct BeaTable
     tablenum::AbstractString
     tablename::AbstractString
     tabledesc::AbstractString
