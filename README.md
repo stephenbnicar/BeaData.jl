@@ -5,7 +5,7 @@ Data API.*
 
 |**Documentation** | **Package Evaluator** | **Build Status** |
 |:----------------:|:---------------------:|:----------------:|
-| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][pkg-0.5-img]][pkg-0.5-url] | [![][travis-img]][travis-url] |
+| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][pkg-0.6-img]][pkg-0.6-url] | [![][travis-img]][travis-url] |
 
 ## Installation
 
@@ -36,7 +36,5 @@ BeaData.jl is not affiliated with, officially maintained, or otherwise supported
 [travis-img]: https://travis-ci.org/stephenbnicar/BeaData.jl.svg?branch=master
 [travis-url]: https://travis-ci.org/stephenbnicar/BeaData.jl
 
-[pkg-0.4-img]: http://pkg.julialang.org/badges/BeaData_0.4.svg
-[pkg-0.4-url]: http://pkg.julialang.org/?pkg=BeaData
-[pkg-0.5-img]: http://pkg.julialang.org/badges/BeaData_0.5.svg
-[pkg-0.5-url]: http://pkg.julialang.org/?pkg=BeaData
+[pkg-0.6-img]: http://pkg.julialang.org/badges/BeaData_0.6.svg
+[pkg-0.6-url]: http://pkg.julialang.org/?pkg=BeaData
