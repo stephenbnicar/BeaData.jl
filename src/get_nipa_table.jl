@@ -19,14 +19,6 @@ function get_nipa_table(b::Bea, TableName::AbstractString, frequency::AbstractSt
     bea_method = "GetData"
     years = join(collect(startyear:1:endyear), ",")
 
-    querydict = Dict("UserID" => key,
-                     "Method" => bea_method,
-                     "DatasetName" => dataset,
-                     "TableName" => TableName,
-                     "Frequency" => frequency,
-                     "Year" => years,
-                     "ResultFormat" => "JSON")
-
     query = string(url,
           "?&UserID=", key,
           "&method=", bea_method,
