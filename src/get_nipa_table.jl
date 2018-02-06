@@ -1,7 +1,7 @@
 """
     get_nipa_table(b::Bea, TableName::AbstractString, frequency::AbstractString, startyear::Int, endyear::Int)
 
-Request a NIPA table from the BEA data API and return an object of type [`BeaNipaTable`](@ref).
+Request a NIPA table from the BEA data API and return an object of type [`BeaTable`](@ref).
 
 Arguments
 ---------
@@ -27,8 +27,17 @@ function get_nipa_table(b::Bea, TableName::AbstractString, frequency::AbstractSt
                      "Year" => years,
                      "ResultFormat" => "JSON")
 
-    response = HTTP.get(url; query = querydict)
-    response_body = String(take!(response))
+    query = string(url,
+          "?&UserID=", key,
+          "&method=", bea_method,
+          "&DatasetName=", dataset,
+          "&TableName=", TableName,
+          "&Frequency=", frequency,
+          "&Year=", years,
+          "&ResultFormat=JSON&")
+
+    response = HTTP.get(query)
+    response_body = String(response.body)
     response_json = JSON.parse(response_body)
 
     if haskey(response_json["BEAAPI"], "Error")
