@@ -76,10 +76,11 @@ function Bea()
 end
 
 function Base.show(io::IO, b::Bea)
-    @printf io "BEA API Connection\n"
-    @printf io "url: %s\n" b.url
-    @printf io "key: %s\n" b.key
+    println(io, "BEA API Connection")
+    println(io, "url: $(b.url)")
+    println(io, "key: $(b.key)")
 end
+
 
 """
 $(TYPEDEF)

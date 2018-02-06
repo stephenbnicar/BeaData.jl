@@ -14,13 +14,14 @@ function get_bea_parameterlist(b::Bea, dataset::String)
     key = b.key
     bea_method = "GetParameterList"
 
-    querydict = Dict("UserID" => key,
-                     "Method" => bea_method,
-                     "DatasetName" => dataset,
-                     "ResultFormat" => "JSON")
+    query = string(url,
+                "?&UserID=", key,
+                "&method=", bea_method,
+                "&DatasetName=", dataset,
+                "&ResultFormat=JSON&")
 
-    response = HTTP.get(url; query = querydict)
-    response_body = String(take!(response))
+    response = HTTP.get(query)
+    response_body = String(response.body)
     response_json = JSON.parse(response_body)
     response_dict = response_json["BEAAPI"]["Results"]["Parameter"]
 
