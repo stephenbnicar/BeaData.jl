@@ -7,14 +7,6 @@ Data API.*
 |:----------------:|:---------------------:|:----------------:|
 | [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][pkg-0.6-img]][pkg-0.6-url] | [![][travis-img]][travis-url] |
 
-## Status (Feb 6, 2018)
-
-Due to some changes in the most recent versions of HTTP.jl and some issues with the BEA server, the current release of BeaData does not work with the current release of HTTP.jl.  After installing, users should (for now) checkout the master branch of each package and then restart Julia.
-```julia
-    Pkg.checkout("HTTP")
-    Pkg.checkout("BeaData")
-```
-
 ## Installation
 
 At the Julia REPL:
