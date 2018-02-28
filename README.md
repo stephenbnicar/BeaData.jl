@@ -3,9 +3,9 @@
 *A Julia interface for retrieving data from the U.S. Bureau of Economic Analysis (BEA)
 Data API.*
 
-|**Documentation** | **Package Evaluator** | **Build Status** |
-|:----------------:|:---------------------:|:----------------:|
-| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][pkg-0.6-img]][pkg-0.6-url] | [![][travis-img]][travis-url] |
+|**Repo Status**|**Documentation** | **Package Evaluator** | **Build Status** | **Coverage** |
+|:-------------:|:----------------:|:---------------------:|:----------------:|:------------:|
+|[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.][repo-img]][repo-url] | [![][docs-stable-img]][docs-stable-url] | [![][pkg-0.6-img]][pkg-0.6-url] | [![][travis-img]][travis-url] | [![codecov.io][codecov-img]][codecov-url] |
 
 ## Installation
 
@@ -38,3 +38,9 @@ BeaData.jl is not affiliated with, officially maintained, or otherwise supported
 
 [pkg-0.6-img]: http://pkg.julialang.org/badges/BeaData_0.6.svg
 [pkg-0.6-url]: http://pkg.julialang.org/?pkg=BeaData
+
+[codecov-img]: http://codecov.io/github/stephenbnicar/BeaData.jl/coverage.svg?branch=master
+[codecov-url]: http://codecov.io/github/stephenbnicar/BeaData.jl?branch=master
+
+[repo-img]: http://www.repostatus.org/badges/latest/active.svg
+[repo-url]: http://www.repostatus.org/#active
