@@ -4,11 +4,23 @@ os:
 - osx
 julia:
 - 0.6
+- nightly
 notifications:
   email: false
+
+matrix:
+ allow_failures:
+ - julia: nightly
+
 after_success:
+# Compile documentation
 - julia -e 'Pkg.add("Documenter")'
 - julia -e 'cd(Pkg.dir("BeaData")); include(joinpath("docs", "make.jl"))'
+# push coverage results to Coveralls
+- julia -e 'cd(Pkg.dir("IMFData")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
+# push coverage results to Codecov
+- julia -e 'cd(Pkg.dir("IMFData")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+
 env:
   matrix:
   - secure: FRol9Z/3LASVa37MfCyV6300ZzP5f3WVed6Am/4eu56klUlboT0yn1P8c2FuL+621gECKqzjo78cjVDuZiJOTDqnKWRfa0Uj2ulA0dsrCgQIidD5ufgOkxKPZS9YyhfTz7TA/5JSKxPl4Ve42NkP4lNMDTMm+S7eS3cbWC6f6EUG/HhYhIhBpZSR8FE+FQUT0aQ51AT31ET/YQJaUiSYQ6VviywUx1YanuhtzamsfKTWqtZwXyKHOK8zJDKh9thtIHU/jedO9Vmkk9sAsddDv9CVbnKSMhXpnsnS+p/quV9W6X4T1wlueW1RxuXRx4A+WIZoLeAX7dIzXkCyPuLzRosYXQuYFWj6acpU+2oFXprWZBkGOv8STNhcruRvlPHdyDor46p6iVncOBejbvbvMCosALqTxYa2qGNbuA7ZzCqz7lkqRQuObBXxWQ1awwTb0ddapOHAnO/3WjzI1IjDvAFnWTMnvvqwSipEefw4Aqr/aLho0q5Mz5cIRDi2rB//KgQR2jsjApWnY78OViNA34GX3Thww07050IOjIfchQR8tPQQRIVKGHygMvOOKpo9U2EGCPI9LimWFZZcgR7U/Rv6eA89mNppHiCmWW94a0QUgPTjIbw+v4wHdjdjzGrSdnhbJXPCEquvk08jCt117V4qRFGH7x1f9nSglvktj/A=
