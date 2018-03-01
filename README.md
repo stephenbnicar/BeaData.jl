@@ -6,6 +6,7 @@ Data API.*
 |**Repo Status**|**Documentation** | **Package Evaluator** | **Build Status** | **Coverage** |
 |:-------------:|:----------------:|:---------------------:|:----------------:|:------------:|
 |[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.][repo-img]][repo-url] | [![][docs-stable-img]][docs-stable-url] | [![][pkg-0.6-img]][pkg-0.6-url] | [![][travis-img]][travis-url] | [![codecov.io][codecov-img]][codecov-url] |
+||||[![AppVeyor][appveyor-img]][appveyor-url]|||
 
 ## Installation
 
@@ -35,6 +36,9 @@ BeaData.jl is not affiliated with, officially maintained, or otherwise supported
 
 [travis-img]: https://travis-ci.org/stephenbnicar/BeaData.jl.svg?branch=master
 [travis-url]: https://travis-ci.org/stephenbnicar/BeaData.jl
+
+[appveyor-img]: https://ci.appveyor.com/api/projects/status/vs710r7oqax2b25m/branch/master?svg=true
+[appveyor-url]: hhttps://ci.appveyor.com/project/stephenbnicar/beadata-jl/branch/master
 
 [pkg-0.6-img]: http://pkg.julialang.org/badges/BeaData_0.6.svg
 [pkg-0.6-url]: http://pkg.julialang.org/?pkg=BeaData
