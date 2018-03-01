@@ -38,7 +38,7 @@ BeaData.jl is not affiliated with, officially maintained, or otherwise supported
 [travis-url]: https://travis-ci.org/stephenbnicar/BeaData.jl
 
 [appveyor-img]: https://ci.appveyor.com/api/projects/status/vs710r7oqax2b25m/branch/master?svg=true
-[appveyor-url]: hhttps://ci.appveyor.com/project/stephenbnicar/beadata-jl/branch/master
+[appveyor-url]: https://ci.appveyor.com/project/stephenbnicar/beadata-jl/branch/master
 
 [pkg-0.6-img]: http://pkg.julialang.org/badges/BeaData_0.6.svg
 [pkg-0.6-url]: http://pkg.julialang.org/?pkg=BeaData
