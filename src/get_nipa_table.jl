@@ -88,13 +88,13 @@ function parse_data_dict(dict::Dict)
         linedesc = string(linedesc, " (", fn, ")")
     end
     # Remove commas from data values
-    dataval = float(replace(dict["DataValue"], ",", ""))
+    dataval = parse(Float64, replace(dict["DataValue"], "," => ""))
 
     # Change date from string to Date() type
     timeperiod = dict["TimePeriod"]
     year = parse(Int, timeperiod[1:4])
     # Quarterly data
-    if ismatch(r"Q", timeperiod)
+    if occursin(r"Q", timeperiod)
         quarter = parse(Int, timeperiod[end])
         date = Date(year, (quarter*3), 1)
     # Annual data

@@ -5,8 +5,8 @@ module BeaData
 
 using HTTP
 using JSON
+using Dates
 using DataFrames, DataStructures
-using DocStringExtensions
 
 import Base.show
 
@@ -23,7 +23,6 @@ const DEFAULT_API_URL = "https://www.bea.gov/api/data"
 const API_KEY_LENGTH  = 36
 
 """
-$(TYPEDEF)
 
 A connection to the U.S. Bureau of Economic Analysis (BEA) Data API.
 
@@ -40,10 +39,6 @@ A valid registration key is required to retrieve data from the BEA's API.  A key
 
 A default API key can be specified in a ~/.beadatarc file.
 
-Fields
-------
-$(FIELDS)
-
 """
 mutable struct Bea
     url::AbstractString
@@ -58,7 +53,7 @@ function Bea()
         key = ENV["BEA_KEY"]
     elseif isfile(joinpath(homedir(), ".beadatarc"))
         open(joinpath(homedir(),".beadatarc"), "r") do f
-            key = readstring(f)
+            key = read(f, String)
         end
         key = rstrip(key)
     else
@@ -83,8 +78,6 @@ end
 
 
 """
-$(TYPEDEF)
-
 A NIPA table with data and metadata returned from a [`get_nipa_table`](@ref) call.
 
 Fields
@@ -114,17 +107,15 @@ mutable struct BeaTable
 end
 
 function Base.show(io::IO, b::BeaTable)
-    @printf io "BEA NIPA Table\n"
-    @printf io "Table: %s\n" b.tablenum
-    @printf io "TableName: %s\n" b.tablename
-    @printf io "Description: %s\n" b.tabledesc
-    @printf io "Coverage: %s, from %s to %s\n" b.frequency b.startyear b.endyear
+    println(io, "BEA NIPA Table")
+    println(io, "Table: $(b.tablenum)")
+    println(io, "TableName: $(b.tablename)")
+    println(io, "Description: $(b.tabledesc)")
+    println(io, "Coverage: $(b.frequency), from $(b.startyear) to $(b.endyear)")
 end
 
 include("get_bea_datasets.jl")
 include("get_bea_parameterlist.jl")
 include("get_nipa_table.jl")
-include("nipa_metadata_tex.jl")
-include("table_metadata_tex.jl")
 
 end # module
