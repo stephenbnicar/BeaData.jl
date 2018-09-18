@@ -5,8 +5,8 @@ Data API.*
 
 |**Repo Status**|**Documentation** | **Build Status** | **Coverage** |
 |:-------------:|:----------------:|:----------------:|:------------:|
-|[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.][repo-img]][repo-url] | [![][docs-stable-img]][docs-stable-url] |  [![][travis-img]][travis-url] | [![codecov.io][codecov-img]][codecov-url] |
-|||[![AppVeyor][appveyor-img]][appveyor-url]|||
+|[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.][repo-img]][repo-url] | [![][docs-stable-img]][docs-stable-url] |  [![][travis-img]][travis-url] [![AppVeyor][appveyor-img]][appveyor-url] | [![codecov.io][codecov-img]][codecov-url] |
+
 
 ## Installation
 
