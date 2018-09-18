@@ -3,17 +3,17 @@
 *A Julia interface for retrieving data from the U.S. Bureau of Economic Analysis (BEA)
 Data API.*
 
-|**Repo Status**|**Documentation** | **Package Evaluator** | **Build Status** | **Coverage** |
-|:-------------:|:----------------:|:---------------------:|:----------------:|:------------:|
-|[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.][repo-img]][repo-url] | [![][docs-stable-img]][docs-stable-url] | [![][pkg-0.6-img]][pkg-0.6-url] | [![][travis-img]][travis-url] | [![codecov.io][codecov-img]][codecov-url] |
-||||[![AppVeyor][appveyor-img]][appveyor-url]|||
+|**Repo Status**|**Documentation** | **Build Status** | **Coverage** |
+|:-------------:|:----------------:|:----------------:|:------------:|
+|[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.][repo-img]][repo-url] | [![][docs-stable-img]][docs-stable-url] |  [![][travis-img]][travis-url] [![AppVeyor][appveyor-img]][appveyor-url] | [![codecov.io][codecov-img]][codecov-url] |
+
 
 ## Installation
 
 At the Julia REPL:
 
 ```julia
-    Pkg.add("BeaData")
+    (v1.0) pkg> add BeaData
 ```
 ## Usage
 
@@ -39,9 +39,6 @@ BeaData.jl is not affiliated with, officially maintained, or otherwise supported
 
 [appveyor-img]: https://ci.appveyor.com/api/projects/status/vs710r7oqax2b25m/branch/master?svg=true
 [appveyor-url]: https://ci.appveyor.com/project/stephenbnicar/beadata-jl/branch/master
-
-[pkg-0.6-img]: http://pkg.julialang.org/badges/BeaData_0.6.svg
-[pkg-0.6-url]: http://pkg.julialang.org/?pkg=BeaData
 
 [codecov-img]: http://codecov.io/github/stephenbnicar/BeaData.jl/coverage.svg?branch=master
 [codecov-url]: http://codecov.io/github/stephenbnicar/BeaData.jl?branch=master

@@ -1,5 +1,5 @@
 using BeaData
-using Base.Test
+using Test
 
 b = Bea()
 dataset_list = get_bea_datasets(b)
