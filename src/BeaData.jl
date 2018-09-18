@@ -1,10 +1,7 @@
-__precompile__()
-
-
 module BeaData
 
-using HTTP
-using JSON
+import HTTP
+import JSON
 using Dates
 using DataFrames, DataStructures
 
