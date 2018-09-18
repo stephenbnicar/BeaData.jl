@@ -16,7 +16,7 @@ export
     get_bea_parameterlist,
     get_nipa_table
 
-const DEFAULT_API_URL = "https://www.bea.gov/api/data"
+const DEFAULT_API_URL = "https://APPS.BEA.GOV/api/data"
 const API_KEY_LENGTH  = 36
 
 """
