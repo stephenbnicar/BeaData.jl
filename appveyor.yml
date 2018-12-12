@@ -1,6 +1,6 @@
 environment:
   matrix:
-  - julia_version: 0.7
+  # - julia_version: 0.7
   - julia_version: 1.0
   BEA_KEY:
     secure: mi6s5YDDEhFRTvoRT/9qnm6QItmMqcglxYDA1Ru2v/YxSGnADRS8+YXQRpw0I92I
