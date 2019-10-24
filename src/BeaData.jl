@@ -1,10 +1,7 @@
 module BeaData
 
-import HTTP
-import JSON
-using Dates
-using DataFrames, DataStructures
-
+using HTTP, JSON, Retry
+using DataFrames, DataStructures, Dates
 import Base.show
 
 export
@@ -16,7 +13,7 @@ export
     get_bea_parameterlist,
     get_nipa_table
 
-const DEFAULT_API_URL = "https://APPS.BEA.GOV/api/data"
+const API_URL = "https://apps.bea.gov/api/data"
 const API_KEY_LENGTH  = 36
 
 """
@@ -42,36 +39,8 @@ mutable struct Bea
     key::AbstractString
 end
 
-Bea(key) = Bea(DEFAULT_API_URL, key)
 
-function Bea()
-    key = ""
-    if "BEA_KEY" in keys(ENV)
-        key = ENV["BEA_KEY"]
-    elseif isfile(joinpath(homedir(), ".beadatarc"))
-        open(joinpath(homedir(),".beadatarc"), "r") do f
-            key = read(f, String)
-        end
-        key = rstrip(key)
-    else
-        error("No API key found, connection not initialized")
-    end
 
-    println("API key loaded.")
-
-    # Key validation
-    if length(key) > API_KEY_LENGTH || length(key) < API_KEY_LENGTH
-        error("Invalid key length (≠ ", API_KEY_LENGTH, " chars), connection not initialized")
-    end
-
-    return Bea(key)
-end
-
-function Base.show(io::IO, b::Bea)
-    println(io, "BEA API Connection")
-    println(io, "url: $(b.url)")
-    println(io, "key: $(b.key)")
-end
 
 
 """
@@ -114,5 +83,6 @@ end
 include("get_bea_datasets.jl")
 include("get_bea_parameterlist.jl")
 include("get_nipa_table.jl")
+include("deprecated.jl")
 
 end # module
