@@ -6,7 +6,6 @@ import Base.show
 
 export
     # Types
-    Bea,
     BeaTable,
     # Methods
     get_bea_datasets,
@@ -14,30 +13,24 @@ export
     get_nipa_table
 
 const API_URL = "https://apps.bea.gov/api/data"
-const API_KEY_LENGTH  = 36
 
-"""
-
-A connection to the U.S. Bureau of Economic Analysis (BEA) Data API.
-
-Constructors
-------------
-* `Bea()`
-* `Bea(key::AbstractString)`
-
-Arguments
----------
-* `key`: Registration key provided by the BEA.
-
-A valid registration key is required to retrieve data from the BEA's API.  A key can be obtained by registering at the BEA website.
-
-A default API key can be specified in a ~/.beadatarc file.
-
-"""
-mutable struct Bea
-    url::AbstractString
-    key::AbstractString
+function __init__()
+    global USER_ID = ""
+    if "BEA_USERID" in keys(ENV)
+        USER_ID = ENV["BEA_USERID"]
+        println("BEA UserID found!")
+    elseif isfile(joinpath(homedir(), ".beadatarc"))
+        open(joinpath(homedir(),".beadatarc"), "r") do f
+            USER_ID = String(strip(read(f, String)))
+        end
+        println("BEA UserID found!")
+    else
+        println("No BEA UserID found!")
+    end
 end
+
+
+
 
 
 
@@ -80,9 +73,9 @@ function Base.show(io::IO, b::BeaTable)
     println(io, "Coverage: $(b.frequency), from $(b.startyear) to $(b.endyear)")
 end
 
+include("deprecated.jl")
 include("get_bea_datasets.jl")
 include("get_bea_parameterlist.jl")
 include("get_nipa_table.jl")
-include("deprecated.jl")
 
 end # module
