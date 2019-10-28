@@ -1,26 +1,12 @@
-## Documentation: http://docs.travis-ci.com/user/languages/julia/
 language: julia
-
 julia:
-  - 1.0
-
+- 1.0
 os:
-  - linux
-  - osx
-
+- linux
+- osx
 notifications:
   email: false
-
 after_success:
-# # Compile documentation
-# - julia -e 'Pkg.add("Documenter")'
-# - julia -e 'cd(Pkg.dir("BeaData")); include(joinpath("docs", "make.jl"))'
-# push coverage results to Coveralls
-#- julia -e 'cd(Pkg.dir("BeaData")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
-# push coverage results to Codecov
 - julia -e 'cd(Pkg.dir("BeaData")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
-
 env:
-  matrix:
-  - secure: FRol9Z/3LASVa37MfCyV6300ZzP5f3WVed6Am/4eu56klUlboT0yn1P8c2FuL+621gECKqzjo78cjVDuZiJOTDqnKWRfa0Uj2ulA0dsrCgQIidD5ufgOkxKPZS9YyhfTz7TA/5JSKxPl4Ve42NkP4lNMDTMm+S7eS3cbWC6f6EUG/HhYhIhBpZSR8FE+FQUT0aQ51AT31ET/YQJaUiSYQ6VviywUx1YanuhtzamsfKTWqtZwXyKHOK8zJDKh9thtIHU/jedO9Vmkk9sAsddDv9CVbnKSMhXpnsnS+p/quV9W6X4T1wlueW1RxuXRx4A+WIZoLeAX7dIzXkCyPuLzRosYXQuYFWj6acpU+2oFXprWZBkGOv8STNhcruRvlPHdyDor46p6iVncOBejbvbvMCosALqTxYa2qGNbuA7ZzCqz7lkqRQuObBXxWQ1awwTb0ddapOHAnO/3WjzI1IjDvAFnWTMnvvqwSipEefw4Aqr/aLho0q5Mz5cIRDi2rB//KgQR2jsjApWnY78OViNA34GX3Thww07050IOjIfchQR8tPQQRIVKGHygMvOOKpo9U2EGCPI9LimWFZZcgR7U/Rv6eA89mNppHiCmWW94a0QUgPTjIbw+v4wHdjdjzGrSdnhbJXPCEquvk08jCt117V4qRFGH7x1f9nSglvktj/A=
-  - secure: sIPGsfd0XI721CXn+IzVLGjhIweEKgkJUm4eWUDa7oYPblJVnxsVTkrw2YFUJxwDuLg2TZ0KhVqy11mrWcnUB4EzqAX39HtrG500lHcybEteg5yx0ZPcnMvorH7BtTb4epMKKWXnzE2PCl5BrBKAc5Qw+9srbCHcbigI1JqItGuw1ws6tm2DxymNrogNeE9xjHxXXi7pHFWbwzj547bqCLVZDgKSzJRC95zGjpjdNP6pYM6V6qP+UzfN++n6FYYW4d0wd2cx72QBgCpa/e6vkjq2prS0xCc2cYcMe8PrE1tohS3TmgVzJ0Qo4iz4IdWaJQE+2igv+C7XgXK5aMx18ZQ8w6EU8p5Yb2wEPHmadiS/7R9SGZk4fDFEXoqWKYe2sXwIKYLd8A18mmkzAE8S41sbne2+uzsQPIsjXIWVhzW77k0qHp1CepUu+TY/jrC7LSm84bW7/BlEDYdAd4sW7l68mO/y9hqhcMRWIn6PHgghoXTSxO3TR1geKDwSe1r3+xG5BypvLlPrXFJtzaaRmyqfeWdOc/hkteo0UlG9S31FcB2gDohYuiWT2E9iIWydOuQ5hEqb97Cr9T6GCzeVleZvJibrbtU85FfgUaAi/6qTZTdD51NoBJdOO5Ktm77pVkb5MwC6WJscEKFNSabX6CldM0Gy7JpNjF2ds/v7nNM=
+  secure: SPLdmQ2woH32qS7mgoWnGC+fc+nq4xNYCmql/CU//NxkncMpcxa/U0me4PsIG57oVBOQSP3Njbl+EiG5GOLY6ov0+0HRUKvbTX4RlsfeRC28vT6UsB7xFgOz1nM3vMeDPtAiSDN4h9v27E00H5D3kyeZqjMO0xkjEzi1LFiCzMMssndhFsOo8tIUCpyMSQqP/m4KyLB667aJFd8GGq/ee5BGgIQIh6fHjrD2PIV6X7coZjGYn/rzUUcalAkw2gutq5cJOadT2v9KV6olOPDA1BwJ39UBEZ8ohx8Z+IHVCVnh0vqR20O6pIAhQM4ZiZBlkk/x4s5uD004VU9WyXoKGRk6scjjT6uflvmnEgD3oDo1MMlvFTd2QHJao2NxjdHumsFOwZWDHU6/ylGyexuBTkXLvYOKMZv2xAa8+FXUDxKsfQp0RwfXYMK87bqn7rbjx4LZvjuGL2MGuODPoWwaIRrATqNO3CdkAc4n7PxHsf9hluNePZ/3exNXrl4HY60xk5uzmIILYFZF58TldHooWK3KhvN+vOonIJneUHp1PA+qHYSfLSejK+czMuKjvNREeJgnGjR//5ZU5PsqD51YfWO6B4pYLrsF4mTZEWiFYBObygcQI1v4VB/3sbYcY8/Q5M3Xf9JLhEO9YuNE+53DMsoqzYUnEfADixkelUTk8Zk=
