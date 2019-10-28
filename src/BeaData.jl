@@ -8,6 +8,9 @@ export
     # Types
     BeaTable,
     # Methods
+    bea_datasets,
+    bea_parameterlist,
+    bea_parametervalues,
     get_bea_datasets,
     get_bea_parameterlist,
     get_nipa_table
@@ -28,13 +31,6 @@ function __init__()
         println("No BEA UserID found!")
     end
 end
-
-
-
-
-
-
-
 
 """
 A NIPA table with data and metadata returned from a [`get_nipa_table`](@ref) call.
@@ -74,8 +70,7 @@ function Base.show(io::IO, b::BeaTable)
 end
 
 include("deprecated.jl")
-include("get_bea_datasets.jl")
-include("get_bea_parameterlist.jl")
+include("metadata_methods.jl")
 include("get_nipa_table.jl")
 
 end # module
