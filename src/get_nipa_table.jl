@@ -41,7 +41,7 @@ function get_nipa_table(b::Bea, TableName::AbstractString, frequency::AbstractSt
     dflong = DataFrame(date = dates, line = linenums, value = values)
     df = unstack(dflong, :date, :line, :value) # Convert to "wide" format
     newnames = [Symbol(string("line", name)) for name in names(df)[2:end]]
-    names!(df, [:date; newnames])
+    rename!(df, [:date; newnames])
 
     # Create OrderedDict of line descriptions
     linedesc = [tup[4] for tup in all_data]
