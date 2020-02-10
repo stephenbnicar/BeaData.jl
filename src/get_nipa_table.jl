@@ -48,7 +48,8 @@ function get_nipa_table(b::Bea, TableName::AbstractString, frequency::AbstractSt
     linekeys = OrderedDict{AbstractString, AbstractString}(zip(linenums, linedesc))
 
     # Extract metadata for the table
-    tablenotes = response_json["BEAAPI"]["Results"]["Notes"]
+    # tablenotes = response_json["BEAAPI"]["Results"]["Notes"]
+    tablenotes = response_json["Notes"]
     tableinfo = split(tablenotes[1]["NoteText"])
     tablenum = rstrip(tableinfo[2], '.')
     tabledesc = join(tableinfo[3:end], " ")
