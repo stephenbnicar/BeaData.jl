@@ -144,7 +144,7 @@ end
 
 
 """
-s   truct BeaTable
+    struct BeaTable
 
 A BEA table with data and metadata returned from a [`bea_table`](@ref) call.
 
