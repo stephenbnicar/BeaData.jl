@@ -62,9 +62,11 @@ function get_nipa_table(b::Bea, TableName::AbstractString, frequency::AbstractSt
     end
 
     frequency == "Q" ? freq = "Quarterly" : freq = "Annual"
-    out = BeaTable(tablenum, TableName, tabledesc, linekeys, notes, freq, startyear, endyear, df)
+    out = BeaTable("NIPA", tablenum, tabledesc, "", "", DataFrame(), DataFrame(),
+        freq, startyear, endyear, TableName, "", df)
     return out
 end
+
 
 """
     parse_data_dict(dict::Dict)

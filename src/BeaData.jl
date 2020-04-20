@@ -11,6 +11,7 @@ export
     bea_datasets,
     bea_parameterlist,
     bea_parametervalues,
+    bea_table,
     get_bea_datasets,
     get_bea_parameterlist,
     get_nipa_table
@@ -61,16 +62,17 @@ mutable struct BeaTable
     df::DataFrame
 end
 
-function Base.show(io::IO, b::BeaTable)
-    println(io, "BEA NIPA Table")
-    println(io, "Table: $(b.tablenum)")
-    println(io, "TableName: $(b.tablename)")
-    println(io, "Description: $(b.tabledesc)")
-    println(io, "Coverage: $(b.frequency), from $(b.startyear) to $(b.endyear)")
-end
+# function Base.show(io::IO, b::BeaTable)
+#     println(io, "BEA NIPA Table")
+#     println(io, "Table: $(b.tablenum)")
+#     println(io, "TableName: $(b.tablename)")
+#     println(io, "Description: $(b.tabledesc)")
+#     println(io, "Coverage: $(b.frequency), from $(b.startyear) to $(b.endyear)")
+# end
 
 include("deprecated.jl")
 include("metadata_methods.jl")
+include("bea_table.jl")
 include("get_nipa_table.jl")
 
 end # module
