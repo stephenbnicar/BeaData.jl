@@ -1,13 +1,16 @@
 """
-    bea_table(dataset::String, table_name::String, frequency::String,
+    bea_table(dataset::String, TableName::String, frequency::String,
         startyear::Int, endyear::Int; user_id = USER_ID) -> BeaTable
 
-Return a [`BeaTable`](@ref) with data and metadata for `table_name`.  Pass
+Return a [`BeaTable`](@ref) with data and metadata for `TableName`.  Pass
 integer value `0` for both `startyear` and `endyear` to retrieve all available years for
 the table. The data values are returned in a `DataFrame` accessed through the
 `data_values` field of the `BeaTable` struct.
 
-Example:
+The `TableName` argument refers to the API `TableName` parameter value for the
+requested table.  These can be found using the [`bea_parametervalues`](@ref) method.
+
+Example: to get Table 1.1.6 in the NIPA dataset, quarterly, from 2015 to 2018.
 ```julia
 # User ID stored in ~/.beadatarc
 julia> nipa116 = bea_table("NIPA", "T10106", "Q", 2015, 2018)
@@ -22,7 +25,7 @@ Dates:     2015 - 2018
 Revised:   August 29, 2019
 ```
 """
-function bea_table(dataset::String, table_name::String, frequency::String,
+function bea_table(dataset::String, TableName::String, frequency::String,
     startyear::Int, endyear::Int; user_id = USER_ID)
 
     supported = ["NIPA", "NIUnderlyingDetail", "FixedAssets"]
@@ -36,7 +39,7 @@ function bea_table(dataset::String, table_name::String, frequency::String,
     querydict = Dict("UserID" => user_id,
                      "Method" => api_method,
                      "DatasetName" => dataset,
-                     "TableName" => table_name,
+                     "TableName" => TableName,
                      "Frequency" => frequency,
                      "Year" => years,
                      "ResultFormat" => "JSON")
@@ -160,7 +163,7 @@ Fields
 * `frequency`: (M)onthly, (Q)uarterly, or (A)nnual
 * `data_startyear`: first year of data returned (may differ from what was requested)
 * `data_endyear`: last year of data returned (may differ from what was requested)
-* `api_tablename`: `table_name` parameter value for the table
+* `api_tablename`: `TableName` parameter value for the table
 * `last_revised`: date the table was last revised
 * `data_values`: `DataFrame` containing the table data values
 """
