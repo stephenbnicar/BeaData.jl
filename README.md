@@ -1,26 +1,23 @@
-# BeaData
+## BeaData.jl
 
-*A Julia interface for retrieving data from the U.S. Bureau of Economic Analysis (BEA)
-Data API.*
+*BeaData.jl* ia a Julia interface for retrieving data from the U.S. Bureau of Economic Analysis (BEA) Data API.
 
-|**Repo Status**| **Build Status** | **Coverage** |
-|:-------------:|:----------------:|:------------:|
-|[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.][repo-img]][repo-url] | [![][travis-img]][travis-url] [![AppVeyor][appveyor-img]][appveyor-url] | [![codecov.io][codecov-img]][codecov-url] |
+A valid User ID key is required to use the BEA's API. A User ID can be obtained by registering  at the BEA website: [https://apps.bea.gov/API/signup/index.cfm](https://apps.bea.gov/API/signup/index.cfm).
 
+- **Repo Status:**
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.][repo-img]][repo-url]
 
-## Installation
+- **Build Status:**
+[![][travis-img]][travis-url] [![AppVeyor][appveyor-img]][appveyor-url]
 
-At the Julia REPL:
+- **Coverage:**
+[![codecov.io][codecov-img]][codecov-url]
 
-```julia
-    (v1.0) pkg> add BeaData
-```
-## Usage
+- **Documentation:**
+[![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url]
 
-A valid User ID key is required to use the BEA's API. A User ID can be obtained by registering [here](http://www.bea.gov/API/signup/index.cfm).
-
-## Disclaimer
-BeaData.jl is not affiliated with, officially maintained, or otherwise supported by the Bureau of Economic Analysis.
+### Disclaimer
+*BeaData.jl* is not affiliated with, officially maintained, or otherwise supported by the Bureau of Economic Analysis.
 
 [docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
 [docs-latest-url]: https://stephenbnicar.github.io/BeaData.jl/latest
