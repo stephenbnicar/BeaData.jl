@@ -5,5 +5,11 @@
 *.tex
 *.pdf
 
+Manifest.toml
+
 docs/build/
 docs/site/
+
+*.txt
+
+.DS_Store
