@@ -63,8 +63,6 @@ function bea_table(dataset::String, TableName::String, frequency::String,
     varnames = [tup[2] for tup in all_data]
     sercodes = [tup[3] for tup in all_data]
     dates    = [tup[4] for tup in all_data]
-    actual_start = Dates.year(dates[1])
-    actual_end   = Dates.year(dates[end])
 
     # Resolve difference in reported units and actual units:
     # billions vs. millions
@@ -81,12 +79,17 @@ function bea_table(dataset::String, TableName::String, frequency::String,
     dfwide = unstack(dflong, :TimePeriod, :LineNumber, :value)
     newnames = [Symbol(string("Line", name)) for name in names(dfwide)[2:end]]
     rename!(dfwide, [:TimePeriod; newnames])
+    actual_start = Dates.year(dfwide[!, :TimePeriod][1])
+    actual_end   = Dates.year(dfwide[!, :TimePeriod][end])
 
     linekeys = unique(DataFrame(LineNumber = linenums, SeriesCode = sercodes,
         LineDescription = varnames))
 
+    fullfreq = frequency == "A" ? "Annual" :
+        (frequency == "Q" ? "Quarterly" : "Monthly")
+
     return BeaTable(dataset, tablenum, tabledesc, metric, units, linekeys,
-        notes, frequency, actual_start, actual_end, api_tablename, last_revised, dfwide)
+        notes, fullfreq, actual_start, actual_end, api_tablename, last_revised, dfwide)
 end
 
 function parse_table_metadata(d)
