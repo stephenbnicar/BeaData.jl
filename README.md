@@ -14,13 +14,13 @@ A valid User ID key is required to use the BEA's API. A User ID can be obtained 
 [![codecov.io][codecov-img]][codecov-url]
 
 - **Documentation:**
-[![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url]
+[![][docs-stable-img]][docs-stable-url] [![][docs-dev-img]][docs-dev-url]
 
 ### Disclaimer
 *BeaData.jl* is not affiliated with, officially maintained, or otherwise supported by the Bureau of Economic Analysis.
 
-[docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
-[docs-latest-url]: https://stephenbnicar.github.io/BeaData.jl/latest
+[docs-dev-img]: https://img.shields.io/badge/docs-dev-blue.svg
+[docs-dev-url]: https://stephenbnicar.github.io/BeaData.jl/dev
 
 [docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
 [docs-stable-url]: https://stephenbnicar.github.io/BeaData.jl/stable
