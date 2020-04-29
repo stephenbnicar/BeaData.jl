@@ -8,6 +8,5 @@ makedocs(
 )
 
 deploydocs(
-    repo = "github.com/stephenbnicar/BeaData.jl.git",
-    versions = ["stable" => "v^", devurl => devurl]
+    repo = "github.com/stephenbnicar/BeaData.jl.git"
 )
