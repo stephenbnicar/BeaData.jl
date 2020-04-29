@@ -1,7 +1,8 @@
 module BeaData
 
 using HTTP, JSON, Retry
-using DataFrames, Dates
+using DataFrames, DataStructures
+using Dates
 import Base.show
 
 export

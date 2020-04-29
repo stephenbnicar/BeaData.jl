@@ -5,6 +5,7 @@ version = "0.4.1"
 
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
@@ -12,6 +13,7 @@ Retry = "20febd7b-183b-5ae2-ac4a-720e7ce64774"
 
 [compat]
 DataFrames = "^0.20.2"
+DataStructures = "^0.17.15"
 HTTP = "^0.8.14"
 JSON = "^0.21"
 Retry = "^0.4"
