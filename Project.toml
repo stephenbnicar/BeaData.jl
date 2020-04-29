@@ -1,7 +1,7 @@
 name = "BeaData"
 uuid = "acefaad2-17a4-5d8b-aa08-e18ef75dd0cf"
 authors = ["Stephen Nicar <stephenbnicar@gmail.com>"]
-version = "0.4.1"
+version = "0.4.2"
 
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"

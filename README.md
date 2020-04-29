@@ -4,6 +4,12 @@
 
 A valid User ID key is required to use the BEA's API. A User ID can be obtained by registering  at the BEA website: [https://apps.bea.gov/API/signup/index.cfm](https://apps.bea.gov/API/signup/index.cfm).
 
+*BeaData.jl* is not affiliated with, officially maintained, or otherwise supported by the Bureau of Economic Analysis.
+
+- **Documentation:**
+ [![][docs-dev-img]][docs-dev-url]
+ <!--[![][docs-stable-img]][docs-stable-url]-->
+
 - **Repo Status:**
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.][repo-img]][repo-url]
 
@@ -12,12 +18,6 @@ A valid User ID key is required to use the BEA's API. A User ID can be obtained 
 
 - **Coverage:**
 [![codecov.io][codecov-img]][codecov-url]
-
-- **Documentation:**
-[![][docs-stable-img]][docs-stable-url] [![][docs-dev-img]][docs-dev-url]
-
-### Disclaimer
-*BeaData.jl* is not affiliated with, officially maintained, or otherwise supported by the Bureau of Economic Analysis.
 
 [docs-dev-img]: https://img.shields.io/badge/docs-dev-blue.svg
 [docs-dev-url]: https://stephenbnicar.github.io/BeaData.jl/dev
