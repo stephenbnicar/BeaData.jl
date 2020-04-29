@@ -6,8 +6,8 @@ os:
 - osx
 notifications:
   email: false
-# after_success:
-# - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
+after_success:
+- julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
 env:
   global:
   - secure: YCsVUpYndhxUofTuffDDguO995P85gnqid644Q9sUGhAb27uGJS2zf16XxGovymu+UJukzJ+iZ97v0DTb8o+7uILGXWgK5bR8MBuJmsefVenx8swaeLNo3Fi0NAmqFYMpvADq52arqaFt0EfayTuTxSn5AwUbqvhRUlnfukoA8cVfpAJE5lSiT220K/HOu+JJ61o6CuGQRiBgtb9AekTBpFaUjOqyGfNEi7SX/4FBfsDcB5/PwmkNDCaAreMizJFFJkzuaKKl1L69OiatZ9pogrvKgvB+sZDL1Nzo1TyEsZRGsCEUC9uMjB0kMEsbbVFtKNvh9hOoMLm9vanU6mbzJPxyUGsdwR8xWQlvHTldADWAkhSE/oJYzBMM8depbR5mwKbtS7yX23tkMIw8xdOnGrYirShJh7zgGbqOPKtg7/UzGrPngrJ99WzMTbR532ZlScZe0QAP863QZh/coM9ixbDLb/in/Wl+cLFJ86xuB0r+LntVT5Nw88hMod+KNzxSRnR+7dMJHHKAKYSTgL2YNjBEjVF53jKvVjF4tOkzwWRVqJk2sXfM0VIaIOVsdgjEz2tNIl7gBoIItrbHLlFbboeTPz9e7B0lEwERpDgrU4XpIsc8T3pblmre/jN+UKr4DEaA27PGYOKJOAp7mdbEmTMMOMKZRaGxV0Xf0v/0qg=
