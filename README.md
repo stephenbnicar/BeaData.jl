@@ -8,7 +8,7 @@ A valid User ID key is required to use the BEA's API. A User ID can be obtained 
 
 - **Documentation:**
  [![][docs-dev-img]][docs-dev-url]
- <!--[![][docs-stable-img]][docs-stable-url]-->
+ [![][docs-stable-img]][docs-stable-url]
 
 - **Repo Status:**
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.][repo-img]][repo-url]
