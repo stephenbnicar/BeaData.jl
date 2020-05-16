@@ -12,7 +12,7 @@ JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 Retry = "20febd7b-183b-5ae2-ac4a-720e7ce64774"
 
 [compat]
-DataFrames = "^0.20.2"
+DataFrames = "^0.20.2, 0.21"
 DataStructures = "^0.17.15"
 HTTP = "^0.8.14"
 JSON = "^0.21"
