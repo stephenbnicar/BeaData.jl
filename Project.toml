@@ -14,7 +14,7 @@ Retry = "20febd7b-183b-5ae2-ac4a-720e7ce64774"
 [compat]
 DataFrames = "^0.20.2, 0.21"
 DataStructures = "^0.18"
-HTTP = "^0.8.14"
+HTTP = "^0.8.14, 0.9"
 JSON = "^0.21"
 Retry = "^0.4"
 julia = "^1.3"
