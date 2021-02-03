@@ -9,6 +9,7 @@ on:
       - 'src/'
       - 'docs/**'
     tags: '*'
+  workflow_dispatch:
 
 jobs:
   build_docs:
@@ -19,11 +20,11 @@ jobs:
       - name: Set up Julia
         uses: julia-actions/setup-julia@latest
         with:
-          version: 1.4
+          version: '1.5'
       - name: Install dependencies
         run: julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
       - name: Build and deploy
         env:
-          # For authentication with GitHub Actions token
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}
         run: julia --project=docs/ docs/make.jl
