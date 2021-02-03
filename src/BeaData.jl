@@ -34,7 +34,6 @@ function __init__()
     end
 end
 
-include("deprecated.jl")
 include("metadata_methods.jl")
 include("bea_table.jl")
 

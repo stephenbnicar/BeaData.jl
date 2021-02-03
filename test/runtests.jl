@@ -22,13 +22,3 @@ end
     faat101 = bea_table("FixedAssets", "FAAt101", "A", 0, 0)
     @test typeof(faat101) <: BeaTable
 end
-
-@testset "deprecated methods" begin
-    b = Bea()
-    dataset_list = get_bea_datasets(b)
-    @test haskey(dataset_list, "NIPA")
-    parameter_list = get_bea_parameterlist(b, "NIPA")
-    @test typeof(parameter_list[1]) <: Dict
-    nipatable = get_nipa_table(b, "T10105", "Q", 2014, 2014)
-    @test typeof(nipatable) <: BeaTable
-end
