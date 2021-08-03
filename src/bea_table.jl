@@ -119,9 +119,16 @@ function parse_data_dict(d::Dict)
     varname = d["LineDescription"]
     seriescode = d["SeriesCode"]
     # Add footnote indicator to varname if present
-    if haskey(d, "NoteRef")
-        fn = d["NoteRef"]
-        varname = string(varname, " (", fn, ")")
+    if haskey(d, "NoteRef") && d["NoteRef"] != d["TableName"]
+        fn = []
+        for i in split(d["NoteRef"], ",")
+             for j in split(i, ".")
+                 if j != d["TableName"]
+                     push!(fn, j)
+                 end
+             end
+        end
+        varname = string(varname, " (", join(fn, ","), ")")
     end
 
     #--Get the date of the observation--#

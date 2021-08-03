@@ -15,9 +15,22 @@ All metadata and data retrieval functions require your User ID key as a keyword 
 
 ## Supported Datasets
 
-This package currently only works with the BEA datasets that return tables (as opposed to individual data series): `NIPA`, `NIUnderlyingDetail`, and `FixedAssets`.
+This package currently only works with the following BEA datasets (descriptions
+    are taken from the BEA website):
+* `NIPA`: National Income and Product Accounts, which "provide a comprehensive picture of the U.S. economy and feature many macroeconomic statistics."
+* `NIUnderlyingDetail`: "[D]etailed estimates of underlying NIPA series that appear regularly in the national income and product account (NIPA) tables[.]"
+* `FixedAssets`: "[S]tatistics on both fixed assets, which are used continuously in processes of production for an extended period of time, and consumer durables, which are generally defined as tangible products that can be stored or inventoried and that have an average life of at least three years."
 
-A full list of the datasets available through the BEA data API can be seen using the [`bea_datasets`](@ref) method described below.
+## API Request Limits
+
+The BEA imposes the following limits on calls to the API:
+* a maximum of 100 requests per minute, and/or
+* a maximum of 100 MB retrieved per minute (100 MB), and/or
+* a maximum of 30 errors per minute.
+
+If you exceed these limits you will be blocked from accessing the API for 1 hour.
+This package does not provide any warning if you're approaching these limits; it
+is up to the user to monitor their usage.
 
 ## Retrieving a Table
 
