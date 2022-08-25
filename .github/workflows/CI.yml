@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v1.0.0
       - uses: julia-actions/setup-julia@latest
         with:
-          version: 1.5
+          version: '1' # automatically expands to the latest stable 1.x release of Julia
       - uses: julia-actions/julia-runtest@master
     env:
       BEA_USERID: ${{ secrets.BEA_USERID }}
