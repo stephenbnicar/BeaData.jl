@@ -1,7 +1,7 @@
 name = "BeaData"
 uuid = "acefaad2-17a4-5d8b-aa08-e18ef75dd0cf"
-authors = ["Stephen Nicar <stephenbnicar@gmail.com>"]
 version = "0.5.4"
+authors = ["Stephen Nicar <stephenbnicar@gmail.com>"]
 
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
@@ -15,7 +15,7 @@ Retry = "20febd7b-183b-5ae2-ac4a-720e7ce64774"
 DataFrames = "1"
 DataStructures = "0.18"
 HTTP = "1"
-JSON = "0.21"
+JSON = "0.21, 1"
 Retry = "^0.4"
 julia = "1"
 
