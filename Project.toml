@@ -1,6 +1,6 @@
 name = "BeaData"
 uuid = "acefaad2-17a4-5d8b-aa08-e18ef75dd0cf"
-version = "0.5.4"
+version = "0.5.5"
 authors = ["Stephen Nicar <stephenbnicar@gmail.com>"]
 
 [deps]
