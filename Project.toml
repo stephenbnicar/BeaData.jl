@@ -13,7 +13,7 @@ Retry = "20febd7b-183b-5ae2-ac4a-720e7ce64774"
 
 [compat]
 DataFrames = "1"
-DataStructures = "0.18"
+DataStructures = "0.18, 0.19"
 HTTP = "1"
 JSON = "0.21, 1"
 Retry = "^0.4"
