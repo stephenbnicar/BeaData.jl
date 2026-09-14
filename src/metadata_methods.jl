@@ -15,7 +15,7 @@ function bea_query(url, querydict)
 
     response_body = String(response.body)
     # Updated 9/13/2026 to conform to JSON 1.x
-    response_json = JSON.parse(response_body; ; dicttype=Dict{String, Any})
+    response_json = JSON.parse(response_body; dicttype=Dict{String, Any})
 
     # Check for bad requests
     if !haskey(response_json["BEAAPI"], "Results")
